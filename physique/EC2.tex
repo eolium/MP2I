@@ -1,0 +1,257 @@
+\documentclass[10pt,dvipsnames,svgnames]{article}
+
+\input{lib.tex}
+
+\geometry{hmargin=2.2cm, vmargin=3.7cm}
+
+\pagestyle{fancy}
+\fancyhead[L]{EC2 - Régime transitoire des circuits linéaires}
+\fancyhead[R]{Yoan de CORNULIER}
+
+\title{EC2 : Régime transitoire des circuits linéaires}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Introduction}
+
+\bigskip
+\bigskip
+
+Le but de ce cours est d'étudier les circuits linéaires entre 2 régiments permanents continus.
+
+\bigskip
+
+Dans des circuits combinant juste des résistances et des sources, les grandeurs varient instantanément, il n'y a donc pas de régime transitoire.
+
+\note{On peut comparer cela au passage d'un échelon u(t) en SI}
+
+\bigskip
+
+Nous introduisons donc deux nouveaux dipôles : le condensateur et la bobine.
+
+\section{Deux nouveaux dipôles}
+
+\subsection{Le condensateur}
+
+\bigskip
+\bigskip
+
+
+Un condensateur est fourni de 2 armatures conductrices, séparées par un isolant, en "influence totale". Il peut être modélisé par le schéma suivant :
+
+\begin{talign*}
+\begin{circuitikz}
+    \draw (0, 1.5) to [open, l_=$C$] (3, 1.5);
+    \draw (0, 0)
+        to [short, o-, i=$i$] (1, 0)
+        to [C, l^=$q~-q$, v<=$u$] (2, 0)
+        to [short, -o] (3, 0)
+    ;
+\end{circuitikz}
+\end{talign*}
+
+\subsubsection*{Relation charge/tension et capacité}
+
+\bigskip
+\bigskip
+
+On admet la relation :
+
+\newcolumntype{M}[1]{>{\raggedright}m{#1}}
+\begin{tabular}{M{5cm} M{10cm}}
+\begin{align*}\begin{split}
+\boxed{q=C.u}
+\end{split}\end{align*}
+&
+
+avec :
+
+\begin{itemize}
+\item $C$ la capacité du condensateur
+\item $u$ la tension aux bornes du condensateur
+\item $i$ le courant traversant le condensateur
+\end{itemize}
+\end{tabular}
+
+\subsubsection*{Relation constitutive}
+
+\bigskip
+\bigskip
+
+Durant un régime transitoire, on note $dq=i.dt$ la quantité de charge arrivant sur l'armature durant une durée $dt$, et on pose :
+
+\begin{align*}\begin{split}
+&~~~~q = C.u\\\\
+&\Longrightarrow dq=C.du\\\\
+&\Longrightarrow i.dt=C.du\\\\
+&\Longrightarrow \boxed{i=C\frac{du}{dt}}
+\end{split}\end{align*}
+
+Remarque : en convention générateur, on aurait $i=-C\frac{du}{dt}$.
+
+\bigskip
+\bigskip
+\bigskip
+
+En régime continu, on a : $i(t)=I$ et $u(t)=U$. On peut alors en déduire que :
+
+\begin{align*}\begin{split}
+~~~~&\frac{du}{dt}=0\\\\
+&\Longrightarrow C\frac{du}{dt}=0\\\\
+&\Longrightarrow \boxed{I=0}
+\end{split}\end{align*}
+
+Le condensateur est alors équivalent à un interrupteur ouvert.
+
+\bigskip
+\bigskip
+\bigskip
+
+\subsubsection*{Aspect énergétique}
+
+\begin{talign*}
+\begin{circuitikz}
+    \draw (0, 1.5) to [open, l_=$C$] (3, 1.5);
+    \draw (0, 0)
+        to [short, o-, i=$i$] (1, 0)
+        to [C, l^=$q~-q$, v<=$u$] (2, 0)
+        to [short, -o] (3, 0)
+    ;
+\end{circuitikz}
+\end{talign*}
+
+La puissance consommée par le condensateur vaut à l'instant $t$ :
+
+\begin{align*}\begin{split}
+p(t)=u(t)i(t)=C.u\frac{du}{dt}
+\end{split}\end{align*}
+
+L'énergie consommée entre un instant $t$ et un instant $t+dt$ vaut donc :
+
+\begin{align*}\begin{split}
+p(t)dt=C.u\frac{du}{dt}dt=C.u.du
+\end{split}\end{align*}
+
+On peut en déduire qu'entre 2 instants $t_1$ et $t_2$, l'énergie consommée vaut :
+
+\begin{align*}\begin{split}
+E_{t_1\rightarrow t_2}&=\int_{t_1}^{t_2}p(t)dt = \int_{t_1}^{t_2}C.u.du = [\frac{1}{2}C.u^2]_{t_1}^{t_2}\\\\
+\boxed{E_{t_1\rightarrow t_2}=\frac{1}{2}C.u^2(t_2)-\frac{1}{2}C.u^2(t_1)}
+\end{split}\end{align*}
+
+\bigskip
+
+Ce résultat illustre le fait qu'un condensateur chargé emmagasine une énergie donnée par :
+
+\begin{align*}\begin{split}
+E_c=\frac{1}{2}C.u^2=\frac{q^2}{2C}
+\end{split}\end{align*}
+
+Cette énergie est stockée dans le volume entre les armatures sous forme d'un champ de force électrique (énergie potentielle électrique).
+
+\bigskip
+
+\textbf{Un condensateur peut être générateur ou récepteur}
+
+\bigskip
+\bigskip
+
+$\longrightarrow$ Conséquence importante : Par principe de conservation de l'énergie, on a $E_c$ continue, on peut en déduire que la tension aux bornes du condensateur est continue dans le temps.
+
+\bigskip
+\bigskip
+\bigskip
+
+\subsubsection*{Association de condensateurs}
+
+\begin{itemize}
+
+\item En parallèles :
+
+\begin{talign*}
+    \begin{circuitikz}
+        \draw (0, 0)
+        to [short, i=$i$] (1, 0)
+        -- (1, 1)
+        to [short, i=$i_1$] (2, 1)
+        to [C, l=$C$, v_<=$u$] (3, 1)
+        -- (4, 1)
+        -- (4, 0)
+        -- (5, 0);
+    \draw (1, 0)
+        -- (1, -1)
+        to [short, i=$i_2$] (2, -1)
+        to [C, l_=$C$] (3, -1)
+        -- (4, -1)
+        -- (4, 0)
+        -- (5, 0);
+\end{circuitikz}
+\end{talign*}
+
+On pose alors :
+
+\begin{tabular}{M{7cm} M{2cm} M{4cm}}
+\begin{align*}\begin{split}
+~~~~i=i_1+i_2
+\end{split}\end{align*}
+&
+Or on a :
+&
+\begin{align*}\begin{cases}
+i_1=C_1\frac{du}{dt}\\
+i_2=C_2\frac{du}{dt}
+\end{cases}\end{align*}
+\end{tabular}
+
+
+On peut donc en déduire :
+
+\begin{align*}\begin{split}
+&~~~~i=C_1\frac{du}{dt}+C_2\frac{du}{dt}=(C_1+C_2)\frac{du}{dt}\\\\
+&\Longrightarrow\boxed{C_{eq}=C_1+C_2}
+\end{split}\end{align*}
+
+\bigskip
+\bigskip
+\bigskip
+
+\item En série :
+
+\end{itemize}
+
+\begin{talign*}
+    \begin{circuitikz}
+        \draw (0, 0)
+        to [short, i=$i$] (1, 0)
+        to [C, l^=$C_1$, v_<=$u_1$] (2, 0)
+        to [C, l^=$C_2$, v_<=$v_2$] (3, 0)
+        -- (4, 0);
+        \draw (1, 1)
+        to [open, v^<=$u$] (3, 1);
+    \end{circuitikz}
+\end{talign*}
+
+On pose alors :
+
+
+\begin{tabular}{M{10cm} M{2cm} M{4cm}}
+\begin{align*}\begin{split}
+u=u_1+u_2\\\\
+~~~~\Longrightarrow \frac{du}{dt}=\frac{du_1}{dt}+\frac{du_2}{dt}
+\end{split}\end{align*}
+&
+Or on a :
+&
+\begin{align*}\begin{split}
+\frac{du}{dt}=\frac{i}{C_1}+\frac{i}{C_2}
+\end{split}\end{align*}
+\end{tabular}
+
+\begin{align*}\begin{split}
+&~~~~\frac{du}{dt}=\Bigl(\frac{1}{C_1}+\frac{1}{C_2}\Bigl)i\\\\
+&\Longrightarrow\boxed{\frac{1}{C_{eq}}=\frac{1}{C_1}+\frac{1}{C_2}}
+\end{split}\end{align*}
+
+\end{document}

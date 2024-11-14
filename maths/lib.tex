@@ -1,0 +1,306 @@
+\nofiles
+
+
+\usepackage{graphicx}
+
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=0.5in,bottom=0.2in, left=0.5in, right=0.5in, footskip=0.3in, includefoot]{geometry}
+
+\usepackage{multicol}
+
+\newcommand{\remind}[1]{\textcolor{red}{\textbf{#1}}}
+\newcommand{\hide}[1]{}
+
+\newcommand{\ep}{\varepsilon}
+\newcommand{\vp}{\varphi}
+\newcommand{\lam}{\lambda}
+\newcommand{\Lam}{\Lambda}
+%\newcommand{\abs}[1]{\ensuremath{\left\lvert#1\right\rvert}} % This clashes with the physics package
+%\newcommand{\norm}[1]{\ensuremath{\left\lVert#1\right\rVert}} % This clashes with the physics package
+%\renewcommand{\ip}[1]{\ensuremath{\left\langle#1\right\rangle}}
+\newcommand{\floor}[1]{\ensuremath{\left\lfloor#1\right\rfloor}}
+\newcommand{\ceil}[1]{\ensuremath{\left\lceil#1\right\rceil}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Y}{\mathbb{Y}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\As}{\mathcal{A}}
+\newcommand{\Bs}{\mathcal{B}}
+\newcommand{\Cs}{\mathcal{C}}
+\newcommand{\Ds}{\mathcal{D}}
+\newcommand{\Es}{\mathcal{E}}
+\newcommand{\Fs}{\mathcal{F}}
+\newcommand{\Gs}{\mathcal{G}}
+\newcommand{\Hs}{\mathcal{H}}
+\newcommand{\Is}{\mathcal{I}}
+\newcommand{\Js}{\mathcal{J}}
+\newcommand{\Ks}{\mathcal{K}}
+\newcommand{\Ls}{\mathcal{L}}
+\newcommand{\Ms}{\mathcal{M}}
+\newcommand{\Ns}{\mathcal{N}}
+\newcommand{\Os}{\mathcal{O}}
+\newcommand{\Ps}{\mathcal{P}}
+\newcommand{\Qs}{\mathcal{Q}}
+\newcommand{\Rs}{\mathcal{R}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ts}{\mathcal{T}}
+\newcommand{\Us}{\mathcal{U}}
+\newcommand{\Vs}{\mathcal{V}}
+\newcommand{\Ws}{\mathcal{W}}
+\newcommand{\Xs}{\mathcal{X}}
+\newcommand{\Ys}{\mathcal{Y}}
+\newcommand{\Zs}{\mathcal{Z}}
+\newcommand{\ab}{\textbf{a}}
+\newcommand{\bb}{\textbf{b}}
+\newcommand{\cb}{\textbf{c}}
+\newcommand{\db}{\textbf{d}}
+\newcommand{\ub}{\textbf{u}}
+%\renewcommand{\vb}{\textbf{v}} % This clashes with the physics package (the physics package already defines the \vb command)
+\newcommand{\wb}{\textbf{w}}
+\newcommand{\xb}{\textbf{x}}
+\newcommand{\yb}{\textbf{y}}
+\newcommand{\zb}{\textbf{z}}
+\newcommand{\Ab}{\textbf{A}}
+\newcommand{\Bb}{\textbf{B}}
+\newcommand{\Cb}{\textbf{C}}
+\newcommand{\Db}{\textbf{D}}
+\newcommand{\eb}{\textbf{e}}
+\newcommand{\ex}{\textbf{e}_x}
+\newcommand{\ey}{\textbf{e}_y}
+\newcommand{\ez}{\textbf{e}_z}
+\newcommand{\abar}{\overline{a}}
+\newcommand{\bbar}{\overline{b}}
+\newcommand{\cbar}{\overline{c}}
+\newcommand{\dbar}{\overline{d}}
+\newcommand{\ubar}{\overline{u}}
+\newcommand{\vbar}{\overline{v}}
+\newcommand{\wbar}{\overline{w}}
+\newcommand{\xbar}{\overline{x}}
+\newcommand{\ybar}{\overline{y}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\Abar}{\overline{A}}
+\newcommand{\Bbar}{\overline{B}}
+\newcommand{\Cbar}{\overline{C}}
+\newcommand{\Dbar}{\overline{D}}
+\newcommand{\Ubar}{\overline{U}}
+\newcommand{\Vbar}{\overline{V}}
+\newcommand{\Wbar}{\overline{W}}
+\newcommand{\Xbar}{\overline{X}}
+\newcommand{\Ybar}{\overline{Y}}
+\newcommand{\Zbar}{\overline{Z}}
+\newcommand{\Aint}{A^\circ}
+\newcommand{\Bint}{B^\circ}
+\newcommand{\limk}{\lim_{k\to\infty}}
+\newcommand{\limm}{\lim_{m\to\infty}}
+\newcommand{\limn}{\lim_{n\to\infty}}
+\newcommand{\limx}[1][a]{\lim_{x\to#1}}
+\newcommand{\liminfm}{\liminf_{m\to\infty}}
+\newcommand{\limsupm}{\limsup_{m\to\infty}}
+\newcommand{\liminfn}{\liminf_{n\to\infty}}
+\newcommand{\limsupn}{\limsup_{n\to\infty}}
+\newcommand{\sumkn}{\sum_{k=1}^n}
+\newcommand{\sumk}[1][1]{\sum_{k=#1}^\infty}
+\newcommand{\summ}[1][1]{\sum_{m=#1}^\infty}
+\newcommand{\sumn}[1][1]{\sum_{n=#1}^\infty}
+\newcommand{\emp}{\varnothing}
+\newcommand{\exc}{\backslash}
+\newcommand{\sub}{\subseteq}
+\newcommand{\sups}{\supseteq}
+\newcommand{\capp}{\bigcap}
+\newcommand{\cupp}{\bigcup}
+\newcommand{\kupp}{\bigsqcup}
+\newcommand{\cappkn}{\bigcap_{k=1}^n}
+\newcommand{\cuppkn}{\bigcup_{k=1}^n}
+\newcommand{\kuppkn}{\bigsqcup_{k=1}^n}
+\newcommand{\cappk}[1][1]{\bigcap_{k=#1}^\infty}
+\newcommand{\cuppk}[1][1]{\bigcup_{k=#1}^\infty}
+\newcommand{\cappm}[1][1]{\bigcap_{m=#1}^\infty}
+\newcommand{\cuppm}[1][1]{\bigcup_{m=#1}^\infty}
+\newcommand{\cappn}[1][1]{\bigcap_{n=#1}^\infty}
+\newcommand{\cuppn}[1][1]{\bigcup_{n=#1}^\infty}
+\newcommand{\kuppk}[1][1]{\bigsqcup_{k=#1}^\infty}
+\newcommand{\kuppm}[1][1]{\bigsqcup_{m=#1}^\infty}
+\newcommand{\kuppn}[1][1]{\bigsqcup_{n=#1}^\infty}
+\newcommand{\cappa}{\bigcap_{\alpha\in I}}
+\newcommand{\cuppa}{\bigcup_{\alpha\in I}}
+\newcommand{\kuppa}{\bigsqcup_{\alpha\in I}}
+\newcommand{\Rx}{\overline{\mathbb{R}}}
+\newcommand{\dx}{\,dx}
+\newcommand{\dy}{\,dy}
+\newcommand{\dt}{\,dt}
+\newcommand{\dax}{\,d\alpha(x)}
+\newcommand{\dbx}{\,d\beta(x)}
+\DeclareMathOperator{\glb}{\text{glb}}
+\DeclareMathOperator{\lub}{\text{lub}}
+\newcommand{\xh}{\widehat{x}}
+\newcommand{\yh}{\widehat{y}}
+\newcommand{\zh}{\widehat{z}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\renewcommand{\iff}{\Leftrightarrow}
+\DeclareMathOperator{\im}{\text{im}}
+\let\spn\relax\let\Re\relax\let\Im\relax
+\DeclareMathOperator{\spn}{\text{span}}
+\DeclareMathOperator{\Re}{\text{Re}}
+\DeclareMathOperator{\Im}{\text{Im}}
+\DeclareMathOperator{\diag}{\text{diag}}
+
+\newtheoremstyle{mystyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{}
+\newtheoremstyle{cstyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{\thmnote{#3}}
+\makeatletter
+\renewenvironment{proof}[1][\proofname] {\par\pushQED{\qed}{\normalfont\sffamily\bfseries\topsep6\p@\@plus6\p@\relax #1\@addpunct{.} }}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+\newcommand{\coolqed}[1]{} %{\includegraphics[width=#1cm]{sunglasses_emoji.png}} %Defines the new QED symbol
+\renewcommand{\qedsymbol}{\coolqed{0.32}} %Implements the new QED symbol
+\theoremstyle{mystyle}{\newtheorem{definition}{Définition}[section]}
+\theoremstyle{mystyle}{\newtheorem{proposition}[definition]{Proposition}}
+\theoremstyle{mystyle}{\newtheorem{theorem}[definition]{Théorème}}
+\theoremstyle{mystyle}{\newtheorem{lemme}[definition]{Lemme}}
+\theoremstyle{mystyle}{\newtheorem{corollaire}[definition]{Corollaire}}
+\theoremstyle{mystyle}{\newtheorem*{remarque}{Remarque}}
+\theoremstyle{mystyle}{\newtheorem*{remarques}{Remarques}}
+\theoremstyle{mystyle}{\newtheorem*{exemple}{Exemple}}
+\theoremstyle{mystyle}{\newtheorem*{exemples}{Exemples}}
+\theoremstyle{definition}{\newtheorem*{exercice}{Exercice}}
+\theoremstyle{cstyle}{\newtheorem*{cthm}{}}
+
+%Warning environment
+\newtheoremstyle{warn}{}{}{}{}{\normalfont}{}{ }{}
+\theoremstyle{warn}
+\newtheorem*{warning}{\warningsign{0.2}\relax}
+
+%Symbol for the warning environment, designed to be easily scalable
+\newcommand{\warningsign}[1]{\tikz[scale=#1,every node/.style={transform shape}]{\draw[-,line width={#1*0.8mm},red,fill=yellow,rounded corners={#1*2.5mm}] (0,0)--(1,{-sqrt(3)})--(-1,{-sqrt(3)})--cycle;
+\node at (0,-1) {\fontsize{48}{60}\selectfont\bfseries!};}}
+
+\usepackage[most]{tcolorbox}
+%\usepackage{tikz,tikz-3dplot,tikz-cd,tkz-tab,tkz-euclide,pgfplots}
+%\pgfplotsset{compat=newest}
+%\usepackage[nameinlink]{cleveref}
+\tcolorboxenvironment{definition}{boxrule=0pt,boxsep=0pt,colback={red!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{red},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proposition}{boxrule=0pt,boxsep=0pt,colback={Orange!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Orange},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{theorem}{boxrule=0pt,boxsep=0pt,colback={blue!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{blue},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{lemme}{boxrule=0pt,boxsep=0pt,colback={Cyan!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Cyan},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{corollary}{boxrule=0pt,boxsep=0pt,colback={violet!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{violet},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proof}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{CadetBlue!80!white},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remark}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Green},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remarks}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Green},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{example}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{examples}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{cthm}{boxrule=0pt,boxsep=0pt,colback={gray!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{gray},sharp corners,before skip=10pt,after skip=10pt,breakable}
+
+%align and align* environments with inline size
+\newenvironment{talign}{\let\displaystyle\textstyle\align}{\endalign}
+\newenvironment{talign*}{\let\displaystyle\textstyle\csname align*\endcsname}{\endalign}
+
+\usepackage[explicit]{titlesec}
+\titleformat{\section}{\fontsize{20}{30}\sffamily\bfseries}{\thesection}{16pt}{#1}
+\titleformat{\subsection}{\fontsize{12}{18}\sffamily\bfseries}{\thesubsection}{12pt}{#1}
+\titleformat{\subsubsection}{\fontsize{10}{12}\sffamily\large\bfseries}{\thesubsubsection}{8pt}{#1}
+
+\titlespacing*{\section}{0pt}{5pt}{5pt}
+\titlespacing*{\subsection}{0pt}{5pt}{5pt}
+\titlespacing*{\subsubsection}{0pt}{5pt}{5pt}
+
+\usepackage{cancel}
+\usepackage{lipsum}
+\usepackage[ddmmyyyy]{datetime}
+\usepackage{eurosym}
+\usepackage{array}
+
+\usepackage{tikz}
+
+\tikzstyle{level 1}=[level distance=3.5cm, sibling distance=4cm]
+\tikzstyle{level 2}=[level distance=3.5cm, sibling distance=3cm]
+\tikzstyle{level 3}=[level distance=3.5cm, sibling distance=2cm]
+
+\tikzstyle{bag} = [text centered,circle,draw,inner sep=0.3em]
+\tikzstyle{end} = [circle, minimum width=3pt,fill, inner sep=0pt]
+
+\author{\large\sffamily Yoan de CORNULIER}
+\newcommand*{\titre}{\LARGE\sffamily}
+
+\usepackage{listings}
+
+\definecolor{code_blue}{rgb}{0.235, 0.592, 0.867}
+\definecolor{code_blue2}{rgb}{0.525, 0.757, 0.725}
+\definecolor{code_orange}{rgb}{0.941, 0.588, 0.259}
+\definecolor{code_orange2}{rgb}{0.957, 0.78, 0.145}
+\definecolor{code_purple}{rgb}{0.729, 0.549, 0.686}
+\definecolor{code_grey1}{rgb}{0.98, 0.98, 0.98}
+\definecolor{code_grey2}{rgb}{0.6, 0.6, 0.6}
+\definecolor{code_grey3}{rgb}{0.5, 0.5, 0.5}
+\definecolor{code_green}{rgb}{0.616, 0.749, 0.251}
+
+\lstdefinestyle{mystyle}{
+	classoffset=0,
+    backgroundcolor=\color{code_grey1},
+    deletekeywords={def, class, return, for, in},
+    keywordstyle=\color{code_blue},
+    classoffset=1,
+	emph={def, class, return, for, in},
+	emphstyle=\color{code_purple},    
+    commentstyle=\color{code_grey3},
+    numberstyle=\tiny\color{code_grey2},
+    stringstyle=\color{code_green},
+    rulecolor=\color{code_grey2},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=leftline,
+	literate=
+	{²}{{\textsuperscript{2}}}1
+	{⁴}{{\textsuperscript{4}}}1
+	{⁶}{{\textsuperscript{6}}}1
+	{⁸}{{\textsuperscript{8}}}1
+	{€}{{\euro{}}}1
+	{é}{{\'e}}1
+	{è}{{\`{e}}}1
+	{ê}{{\^{e}}}1
+	{ë}{{\¨{e}}}1
+	{É}{{\'{E}}}1
+	{Ê}{{\^{E}}}1
+	{û}{{\^{u}}}1
+	{ù}{{\`{u}}}1
+	{â}{{\^{a}}}1
+	{à}{{\`{a}}}1
+	{á}{{\'{a}}}1
+	{ã}{{\~{a}}}1
+	{Á}{{\'{A}}}1
+	{Â}{{\^{A}}}1
+	{Ã}{{\~{A}}}1
+	{ç}{{\c{c}}}1
+	{Ç}{{\c{C}}}1
+	{õ}{{\~{o}}}1
+	{ó}{{\'{o}}}1
+	{ô}{{\^{o}}}1
+	{Õ}{{\~{O}}}1
+	{Ó}{{\'{O}}}1
+	{Ô}{{\^{O}}}1
+	{î}{{\^{i}}}1
+	{Î}{{\^{I}}}1
+	{í}{{\'{i}}}1
+	{Í}{{\~{Í}}}1,
+}
+
+\lstset{style=mystyle}

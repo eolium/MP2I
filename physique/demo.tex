@@ -1,0 +1,200 @@
+\documentclass[10pt,dvipsnames,svgnames]{article}
+
+\setlength{\parindent}{0pt}
+
+\title{Titre inutile}
+
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage[european, straightvoltages, cute inductors]{circuitikz}
+
+\geometry{hmargin=2.2cm,vmargin=3.7cm}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb}
+
+\usepackage{graphicx}
+
+
+\usepackage{tabularx}
+
+\newcommand{\vsa}{\vspace{1em}}
+\newcommand{\vsb}{\vspace{0.5em}}
+
+
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\pagestyle{fancy}
+\fancyhead[L]{Correction TD - Traitement du signal}
+\fancyhead[R]{Ewen Passelande}
+
+\renewcommand*{\thesubsection}{\arabic{subsection}.}
+
+\begin{document}
+
+\section*{Exercice 4 - Comportement d'un circuit}
+
+\newcolumntype{M}[1]{>{\raggedright}m{#1}}
+\begin{tabular}{M{12cm} M{10cm}}
+  Soit le circuit ci-à-côté. Le condensateur est initialement déchargé et on ferme l'interrupteur à $ t=0 $. Les différentes quantités $ i(t) $, $ i_1 (t) $, $ i_2 (t) $ et $ q(t) $ (charge du condensateur) vérifient une équation différentielle linéaire du deuxième ordre à coefficient constants (que l'on ne cherchera pas à établir) dont la solution homogène est pseudo-oscillante.
+  &
+    \begin{circuitikz}
+      \draw (0,-3)
+      -- (0.2,-3)
+      to [closing switch, l_=$K$] (2,-3)
+      to [vsource, v_=$E$] (4,-3)
+      -- (4,-1);
+
+      \draw (0,-3)
+      -- (0,-1)
+      -- (0.3,-1)
+      -- (0.3,-0.5)
+      to [L, l=$L$, i^<=$i_1$] (2.1,-0.5)
+      -- (2.1,-1)
+      to [R, v=$Ri$, l=$R$] (4,-1);
+
+      \draw (0.3,-1)
+      -- (0.3,-1.5)
+      to [C, l_=$C$, i^<=$i_2$, v^>=$u$] (2.1, -1.5)
+      -- (2.1, -1);
+      
+      \draw (4,-3)
+      to [open, i=$i$] (4,-2);
+    \end{circuitikz}
+\end{tabular}
+
+\subsection{Déterminer en $ t = 0^+ $ les valeurs des différentes intensités, de la charge ainsi que de $ \dfrac{di}{dt} $.}
+
+En $ t = 0^+ $, d'après la continuité du courant aux bornes de la bobine, \fbox{$ i_1(0^+) = 0 $}.
+
+De plus, la charge du condensateur est aussi continue, donc \fbox{$ q(0^+) = 0 $}.
+
+
+On trouve donc le circuit équivalent suivant :
+
+\begin{tabular}{M{5cm} M{5cm}}
+  \begin{circuitikz}
+    \draw (0,0)
+    to [vsource, v_=$E$] (3,0)
+    -- (3,2)
+    to [R, v<=$Ri$] (1,2)
+    -- (0,2)
+    -- (0,0);
+    
+    \draw (3,0)
+    to [open, i=$i$] (3,2);
+    
+    \draw (1,2)
+    to [open, i_>=$ i_2 $] (0.5,2);
+    
+    \draw (1,1.8)
+    to [open, v^<= {$ u = 0 $}] (0,1.8);
+  \end{circuitikz}  
+  
+  & \[
+    \begin{array}{c c @{ \hspace{2em} \Longrightarrow \hspace{2em} } c}
+      
+      \text{Ainsi :} &
+                       \left \{
+                       \begin{array}{c @{=} c}
+                         i(0^+) & i_2(0^+) \\
+                         E & R i(0^+)
+                       \end{array}
+                             \right.
+                           &
+                             \fbox{$i(0^+) = i_2(0^+) = \dfrac{E}{R}$}
+    \end{array} \raggedright
+                             \]\\
+\end{tabular}
+
+\begin{tabular}{c l} 
+  De plus, d'après la loi des mailles : \hspace {1em} $ E = u + Ri $
+  & $ \Longrightarrow E = \dfrac{q}{C} + Ri $ \\
+  & $ \Longrightarrow 0 = \dfrac{1}{C} \dfrac{dq}{dt} + R \dfrac{di}{dt} \hspace{1em} \text{(en dérivant)} $ \\
+  & $ \Longrightarrow \dfrac{i_2}{C} + R \dfrac{di}{dt} = 0 $ \\
+  & $ \Longrightarrow \fbox{$\dfrac{di}{dt}(0^+) = - \dfrac{i_2(0^+)}{RC} = 0$} $
+\end{tabular}\\
+
+\newpage
+\subsection{Faire de même après un temps très long, c'est-à-dire après le régime transitoire.}
+
+Après que le régime permanent ait été établi, la bobine se comporte comme un fil et le condensateur comme un interrupteur ouvert, on a donc \fbox{$i_2(+\infty) = 0$} et on obtient le circuit suivant :
+
+\begin{tabular}{M{5cm} M{5cm}}
+  \begin{circuitikz}
+    \draw (0,0)
+    to [vsource, v_=$E$] (3,0)
+    -- (3,2)
+    to [R, v<=$Ri$] (1,2)
+    -- (0,2)
+    -- (0,0);
+    
+    \draw (3,0)
+    to [open, i=$i$] (3,2);
+    
+    \draw (1,2)
+    to [open, i_>=$ i_1 $] (0.5,2);
+    
+    \draw (1,1.8)
+    to [open, v^<= {$ u = 0 $}] (0,1.8);
+  \end{circuitikz}  
+  
+  & \[
+    \begin{array}{c c @{ \hspace{2em} \Longrightarrow \hspace{2em} } c}
+      
+      \text{Ainsi :} &
+                       \left \{
+                       \begin{array}{c @{=} c}
+                         i(+\infty) & i_1(+\infty) \\
+                         E & R i(+\infty)
+                       \end{array}
+                             \right.
+                           &
+                             \fbox{$i(+\infty) = i_1(+\infty) = \dfrac{E}{R}$} \\
+      \text{Et :} & u = 0 & \fbox{$ q(+\infty) = Cu(+\infty) = 0$}
+    \end{array} \raggedright
+                             \]\\
+\end{tabular}
+
+Et enfin, comme le régime permanent est établi, les grandeurs ne varient plus, donc \fbox{$ \dfrac{di}{dt}(+\infty) = 0$}
+
+\subsection{En déduire l'allure de l'évolution temporelle de l'intensité $i(t)$.}
+
+On obtient finalement d'après les deux premières questions :
+\renewcommand{\arraystretch}{2.3}
+\[
+\hspace{1em}
+\begin{array}{|c|c|c|c|c|c|}
+  \hline
+  & i &  i_1  &  i_2  &  q  &  \dfrac{di}{dt}   \\
+  \hline
+  t = 0^+  &  \dfrac{E}{R}  &  0  &  \dfrac{E}{R}  &  0  &  0  \\
+  \hline
+  t = +\infty & \dfrac{E}{R} & \dfrac{E}{R} & 0 & 0 & 0 \\
+  \hline
+\end{array}
+\]
+
+$i(0^+) = \dfrac{E}{R}$ et $i(t)$ tend vers $\dfrac{E}{R}$, de plus la dérivée de $i$ est négative en $t=0^+$. Comme $i$ est pseudo-oscillante d'après l'énnoncé, on obtient l'allure suivante :
+
+\begin{center}
+  \begin{tikzpicture}[domain=0:7]
+    \draw[->] (-1,0) -- (7,0) node[right] {$t$};
+    \draw[->] (0,-1) -- (0,3) node[above] {$i(t)$};
+    \draw[dotted] (0,1.5) -- (7,1.5) node[above] {$ $};
+    
+    \foreach \y in {1.5} {
+      \draw (0.1cm,\y) -- (-0.1cm,\y) node[left] {$\dfrac{E}{R}$};
+    }
+    
+    \begin{scope}
+      \clip (0,-1) rectangle (10,4);
+      \draw[color=red,samples=100] plot ({\x},{1.5-exp(-(\x/1.4))*sin(150*\x)});
+      
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+\end{document}
