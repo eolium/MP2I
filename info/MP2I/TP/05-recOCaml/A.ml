@@ -37,8 +37,6 @@ let rec afficher_espaces = fun (n: int) ->
   if n > 0 then
     let _ = Printf.printf " " in
     afficher_espaces (n-1)
-  else
-    ()
 
 let rec carre_creux_milieu = fun (l: int) (n: int) ->
   if l > 0 then
@@ -46,8 +44,6 @@ let rec carre_creux_milieu = fun (l: int) (n: int) ->
     let _ = afficher_espaces (n-2) in
     let _ = Printf.printf "*\n" in
     carre_creux_milieu (l-1) n
-  else
-    ()
 
 let carre_creux = fun (n: int) ->
   let _ = ligne_etoiles n in
