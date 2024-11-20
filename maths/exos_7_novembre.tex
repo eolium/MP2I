@@ -1,0 +1,252 @@
+\documentclass{article}
+
+\input{lib.tex}
+
+\title{Exercices Du TD de Mathématiques}
+\author{Arnaud, Hugo, Kim My, Raphaël, Yoan}
+
+\begin{document}
+\maketitle
+
+\underline{Exercice 10 :}
+
+\bigskip
+\bigskip
+\bigskip
+
+\footnotesize
+
+1) Soit $n\in\N$. On pose $\forall k\in\N^*$
+\begin{align}
+\begin{split}
+k\leq t\leq k+1\\
+&\Longrightarrow \frac{1}{k+1}\leq\frac{1}{t}\leq\frac{1}{k}\\\\
+&\Longrightarrow \int^{k+1}_k\frac{1}{k+1}dt\leq\int^{k+1}_k\frac{1}{t}dt\leq\int^{k+1}_k\frac{1}{k}dt\\\\
+&\Longrightarrow \frac{1}{k+1}\int^{k+1}_k1dt\leq\int^{k+1}_k\frac{1}{t}dt\leq\frac{1}{k}\int^{k+1}_k1dt\\\\
+&\Longrightarrow\boxed{\frac{1}{k+1}\leq\int^{k+1}_k\frac{1}{t}dt\leq\frac{1}{k}}
+\end{split}
+\end{align}
+
+\bigskip
+\bigskip
+\bigskip
+
+2) D'après la question 1, on pose $\forall n\in\N^*$ :
+
+\begin{align}
+\begin{split}
+&\frac{1}{k+1}\leq\int^{k+1}_k\frac{1}{t}dt\leq\frac{1}{k}\\\\
+&\Longrightarrow \sum^{n-1}_{k=1}\frac{1}{k+1}\leq\sum^{n-1}_{k=1}\int^{k+1}_k\frac{1}{t}dt\leq\sum^{n-1}_{k=1}\frac{1}{k}\\\\
+&\Longrightarrow \sum^{n}_{k=2}\frac{1}{k}\leq\int^n_1\frac{1}{t}dt\leq S_n-\frac{1}{n}\\\\
+&\Longrightarrow S_n-1\leq\Bigl[\ln(n)\Bigl]^1_0\leq S_n-\frac{1}{n}\\\\
+&\Longrightarrow S_n-1\leq \ln(n)-\ln(1)\leq S_n-\frac{1}{n}\\\\
+&\Longrightarrow\boxed{S_n-1\leq \ln(n)\leq S_n-\frac{1}{n}}
+\end{split}
+\end{align}
+
+\bigskip
+\bigskip
+\bigskip
+
+3) On pose $\forall n\in\N^*$ :
+
+\begin{align}
+\begin{split}
+\ln(n)&\leq S_n-\frac{1}{n} \Longrightarrow \ln(n)+\frac{1}{n}\leq S_n
+\end{split}
+\end{align}
+
+\bigskip
+
+Or on a :
+
+\begin{align}
+\begin{split}
+\lim_{n\rightarrow+\infty}\ln(n)+\frac{1}{n}=+\infty
+\end{split}
+\end{align}
+
+Par croissance comparée, on en déduit donc :
+
+\begin{align}
+\begin{split}
+\boxed{\lim_{n\rightarrow+\infty}S_n=+\infty}
+\end{split}
+\end{align}
+
+\bigskip
+\bigskip
+\bigskip
+
+De plus, on a $\forall n\in\N^*$ :
+
+\begin{align}
+\begin{split}
+S_n-1&\leq \ln(n)\\\\
+\Longrightarrow S_n&\leq \ln(n)+1\\\\
+\Longrightarrow \frac{S_n}{\ln(n)}&\leq \frac{\ln(n)+1}{\ln(n)}\\\\
+\Longrightarrow \frac{S_n}{\ln(n)}&\leq \frac{\ln(n)\Bigl(1+\frac{1}{\ln(n)}\Bigl)}{\ln(n)}\\\\
+\Longrightarrow \frac{S_n}{\ln(n)}&\leq 1+\frac{1}{\ln(n)}
+\end{split}
+\end{align}
+
+\bigskip
+
+Puis :
+
+\bigskip
+
+\begin{align}
+\begin{split}
+\ln(n)&\leq S_n-\frac{1}{n}\\\\
+\Longrightarrow \ln(n)+\frac{1}{n}&\leq S_n\\\\
+\Longrightarrow \frac{\ln(n)+\frac{1}{n}}{\ln(n)}&\leq\frac{S_n}{\ln(n)}\\\\
+\Longrightarrow \frac{\ln(n)\Bigl(1+\frac{1}{n\ln(n)}\Bigl)}{\ln(n)}&\leq\frac{S_n}{\ln(n)}\\\\
+\Longrightarrow 1+\frac{1}{n\ln(n)}&\leq\frac{S_n}{\ln(n)}
+\end{split}
+\end{align}
+
+\bigskip
+
+On a donc finalement :
+
+\begin{align}
+\begin{split}
+\boxed{1+\frac{1}{n\ln(n)}\leq \frac{S_n}{\ln(n)} \leq 1+\frac{1}{\ln(n)}}
+\end{split}
+\end{align}
+
+Or on a :
+
+\begin{align}
+\begin{split}
+\lim_{n\rightarrow+\infty}1+\frac{1}{n\ln(n)} = 1\\\\
+\lim_{n\rightarrow+\infty}1+\frac{1}{\ln(n)} = 1
+\end{split}
+\end{align}
+
+\bigskip
+\bigskip
+
+D'après le théorème des Gendarmes, on peut donc en conclure que :
+
+\begin{align}
+\begin{split}
+\boxed{\lim_{n\rightarrow+\infty}\frac{S_n}{\ln(n)}=1}
+\end{split}
+\end{align}
+
+\newpage
+
+\normalsize
+
+\underline{Exercice 9 :}
+
+\footnotesize
+
+\bigskip
+\bigskip
+\bigskip
+
+Soit $(n, m)\in\N^*$. On pose :
+
+\begin{align}
+\begin{split}
+I(0, m) &= \int_0^1 x^0 (1-x)^m dx = -\int_0^1-(1-x)^mdx\\\\
+&=-\Bigl[\frac{(1-x)^{m+1}}{m+1}\Bigl]_0^1=-\frac{0^{m+1}}{m+1} + \frac{1^{m+1}}{m+1}\\\\
+\Longrightarrow& \boxed{I(0, m) = \frac{1}{m+1}}
+\end{split}
+\end{align}
+
+\bigskip
+\bigskip
+
+\begin{align}
+\begin{split}
+I(n, 0) &= \int_0^1 x^n (1-x)^0 dx = \int_0^1 x^n dx\\\\
+&=\Bigl[\frac{x^{n+1}}{n+1}\Bigl]_0^1 = \frac{1^{n+1}}{n+1}-\frac{0^{n+1}}{n+1}\\\\
+\Longrightarrow& \boxed{I(n, 0) = \frac{1}{n+1}}
+\end{split}
+\end{align}
+
+\bigskip
+\bigskip
+\bigskip
+
+2) Soit $(n, m)\in\N\times\N^*$. On a :
+
+\begin{align}
+\begin{split}
+I=\int_0^1x^n(1-x)^mdx
+\end{split}
+\end{align}
+
+On pose :
+
+\begin{align}
+\begin{split}
+u:x\rightarrow \frac{x^{n+1}}{n+1} ~~~ &\Longrightarrow ~~ u':x\rightarrow x^n\\\\
+v:x\rightarrow(1-x)^m &\Longrightarrow v':x\rightarrow-m(1-x)^{m-1}
+\end{split}
+\end{align}
+
+Or on a $u$ et $v$ de classe $\mathcal{C}^1$.
+
+\begin{align}
+\begin{split}
+&\Longrightarrow I(n, m) = \Bigl[(1-x)^m\frac{x^{n+1}}{n+1}\Bigl]_0^1 - \int_0^1 -m(1-x)^{m-1}\frac{x^{n+1}}{n+1}dx\\\\
+&\Longrightarrow I(n, m) = 0^m\frac{1^{n+1}}{n+1} - \frac{1^m}{\frac{0^{n+1}}{n+1}} + \int_0^1\frac{m}{n+1}(1-x)^{m-1}x^{n+1}\\\\
+&\Longrightarrow I(n, m) = \frac{m}{n+1}\int_0^1(1-x)^{m-1}x^{n+1}\\\\
+&\Longrightarrow \boxed{I(n, m) =\frac{m}{n+1}I(n+1, m-1)}
+\end{split}
+\end{align}
+
+\newpage
+
+3) Montrons pour tout $n\in\N$ la propriété $P(n)$:"$\forall n\in\N, I(n, m)=\frac{n!m!}{(n+m)!}I(n+m, 0)$".
+
+\begin{itemize}
+\item On pose $m=0$.
+
+\begin{align}
+\begin{split}
+\frac{n!0!}{(n+0)!}I(n+0, 0)=\frac{n!}{n!}\frac{1}{n+1}=\frac{1}{n+1}=I(n, 0)
+\end{split}
+\end{align}
+
+La propriété est donc vérifiée pour $n=0$, la démonstration est initialisée.
+
+\bigskip
+\bigskip
+\bigskip
+
+\item Supposons $m\in\N^*/P(n)$ est vrai, et vérifions $P(n+1)$. On pose :
+
+\begin{align}
+\begin{split}
+I(n, m+1)&=\frac{m+1}{n+1}I(n+1, m)\\\\
+\Longrightarrow I(n, m+1)&=\frac{m+1}{n+1}\frac{(n+1)!m!}{(n+1+m)!}I(n+1+m, 0)\\\\
+\Longrightarrow I(n, m+1)&=\frac{n!(m+1)!}{(n+m+1)!}I(n+m+1, 0)\\\\
+\Longrightarrow &\boxed{I(n, m+1)=\frac{n!(m+1)!}{(n+m+1)!}I(n+m+1, 0)}
+\end{split}
+\end{align}
+
+Ainsi, on a montré que $P(m)\Rightarrow P(m+1)$, la propriété est héréditaire.
+
+\bigskip
+\bigskip
+\bigskip
+
+\item La propriété est vraie pour $m=0$ et $\forall m\in\N, P(m)\Rightarrow P(m+1)$, elle est donc vraie par réccurence. On a donc :
+
+\end{itemize}
+
+\begin{equation}
+\begin{split}
+\forall (n, m)\in\N^2, I(n, m)&=\frac{n!m!}{(n+m)!}I(n+m, 0)\\\\
+I(n, m) &= \frac{n!m!}{(n+m)!}\frac{1}{n+m+1}\\\\
+&\boxed{I(n, m) = \frac{n!m!}{(n+m+1)!}}
+\end{split}
+\end{equation}    
+
+\end{document}

@@ -1,0 +1,717 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+
+\hypersetup{
+    hidelinks,
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Table des matières},
+}
+
+\input{lib.tex}
+
+\geometry{hmargin=2.2cm, vmargin=3.7cm}
+
+\pagestyle{fancy}
+\fancyhead[L]{EC2 - Régime transitoire des circuits linéaires}
+\fancyhead[R]{Yoan de CORNULIER}
+
+\title{EC2 : Régime transitoire des circuits linéaires}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\fancyhead[L]{EC2 - Introduction}
+\addcontentsline{toc}{section}{Introduction}
+\section*{Introduction}
+
+\bigskip
+\bigskip
+
+Le but de ce cours est d'étudier les circuits linéaires entre 2 régiments permanents continus.
+
+\bigskip
+
+Dans des circuits combinant juste des résistances et des sources, les grandeurs varient instantanément, il n'y a donc pas de régime transitoire.
+
+\note{On peut comparer cela au passage d'un échelon u(t) en SI}
+
+\bigskip
+
+Nous introduisons donc deux nouveaux dipôles : le condensateur et la bobine.
+
+\newpage
+\fancyhead[L]{EC2 - Deux nouveaux dipôles}
+\section{Deux nouveaux dipôles}
+
+\subsection{Le condensateur}
+
+\bigskip
+\bigskip
+
+
+Un condensateur est fourni de 2 armatures conductrices, séparées par un isolant, en "influence totale". Il peut être modélisé par le schéma suivant :
+
+\begin{talign*}\begin{circuitikz}
+    \draw (0, 1.5) to [open, l_=$C$] (3, 1.5);
+    \draw (0, 0)
+        to [short, o-, i=$i$] (1, 0)
+        to [C, l^=$q~-q$, v<=$u$] (2, 0)
+        to [short, -o] (3, 0);
+\end{circuitikz}\end{talign*}
+
+\subsubsection*{Relation charge/tension et capacité}
+
+\bigskip
+\bigskip
+
+On admet la relation :
+
+\newcolumntype{M}[1]{>{\raggedright}m{#1}}
+\begin{tabular}{M{5cm} M{10cm}}
+\begin{align*}\begin{split}
+\boxed{q=C.u}
+\end{split}\end{align*}
+&
+
+avec :
+
+\begin{itemize}
+\item $C$ la capacité du condensateur
+\item $u$ la tension aux bornes du condensateur
+\item $i$ le courant traversant le condensateur
+\end{itemize}
+\end{tabular}
+
+\subsubsection*{Relation constitutive}
+
+\bigskip
+\bigskip
+
+Durant un régime transitoire, on note $dq=i.dt$ la quantité de charge arrivant sur l'armature durant une durée $dt$, et on pose :
+
+\begin{align*}\begin{split}
+&~~~~q = C.u\\\\
+&\Longrightarrow dq=C.du\\\\
+&\Longrightarrow i.dt=C.du\\\\
+&\Longrightarrow \boxed{i=C\frac{du}{dt}}
+\end{split}\end{align*}
+
+Remarque : en convention générateur, on aurait $i=-C\frac{du}{dt}$.
+
+\bigskip
+\bigskip
+\bigskip
+
+En régime continu, on a : $i(t)=I$ et $u(t)=U$. On peut alors en déduire que :
+
+\begin{align*}\begin{split}
+~~~~&\frac{du}{dt}=0\\\\
+&\Longrightarrow C\frac{du}{dt}=0\\\\
+&\Longrightarrow \boxed{I=0}
+\end{split}\end{align*}
+
+Le condensateur est alors équivalent à un interrupteur ouvert.
+
+\bigskip
+\bigskip
+\bigskip
+
+\subsubsection*{Aspect énergétique}
+
+\begin{talign*}\begin{circuitikz}
+    \draw (0, 1.5) to [open, l_=$C$] (3, 1.5);
+    \draw (0, 0)
+        to [short, o-, i=$i$] (1, 0)
+        to [C, l^=$q~-q$, v<=$u$] (2, 0)
+        to [short, -o] (3, 0)
+    ;
+\end{circuitikz}\end{talign*}
+
+La puissance consommée par le condensateur vaut à l'instant $t$ :
+
+\begin{align*}\begin{split}
+p(t)=u(t)i(t)=C.u\frac{du}{dt}
+\end{split}\end{align*}
+
+L'énergie consommée entre un instant $t$ et un instant $t+dt$ vaut donc :
+
+\begin{align*}\begin{split}
+p(t)dt=C.u\frac{du}{dt}dt=C.u.du
+\end{split}\end{align*}
+
+On peut en déduire qu'entre 2 instants $t_1$ et $t_2$, l'énergie consommée vaut :
+
+\begin{align*}\begin{split}
+E_{t_1\rightarrow t_2}&=\int_{t_1}^{t_2}p(t)dt = \int_{t_1}^{t_2}C.u.du = [\frac{1}{2}C.u^2]_{t_1}^{t_2}\\\\
+\boxed{E_{t_1\rightarrow t_2}=\frac{1}{2}C.u^2(t_2)-\frac{1}{2}C.u^2(t_1)}
+\end{split}\end{align*}
+
+\bigskip
+
+Ce résultat illustre le fait qu'un condensateur chargé emmagasine une énergie donnée par :
+
+\begin{align*}\begin{split}
+E_c=\frac{1}{2}C.u^2=\frac{q^2}{2C}
+\end{split}\end{align*}
+
+Cette énergie est stockée dans le volume entre les armatures sous forme d'un champ de force électrique (énergie potentielle électrique).
+
+\bigskip
+
+\textbf{Un condensateur peut être générateur ou récepteur}
+
+\bigskip
+\bigskip
+
+$\longrightarrow$ Conséquence importante : Par principe de conservation de l'énergie, on a $E_c$ continue, on peut en déduire que la tension aux bornes du condensateur est continue dans le temps.
+
+\bigskip
+\bigskip
+\bigskip
+
+\subsubsection*{Association de condensateurs}
+
+\begin{itemize}
+
+\item En parallèles :
+
+\begin{talign*}\begin{circuitikz}
+        \draw (0, 0)
+        to [short, i=$i$] (1, 0)
+        -- (1, 1)
+        to [short, i=$i_1$] (2, 1)
+        to [C, l=$C$, v_<=$u$] (3, 1)
+        -- (4, 1)
+        -- (4, 0)
+        -- (5, 0);
+    \draw (1, 0)
+        -- (1, -1)
+        to [short, i=$i_2$] (2, -1)
+        to [C, l_=$C$] (3, -1)
+        -- (4, -1)
+        -- (4, 0)
+        -- (5, 0);
+\end{circuitikz}\end{talign*}
+
+On pose alors :
+
+\begin{tabular}{M{7cm} M{2cm} M{4cm}}
+\begin{align*}\begin{split}
+~~~~i=i_1+i_2
+\end{split}\end{align*}
+&
+Or on a :
+&
+\begin{align*}\begin{cases}
+i_1=C_1\frac{du}{dt}\\
+i_2=C_2\frac{du}{dt}
+\end{cases}\end{align*}
+\end{tabular}
+
+
+On peut donc en déduire :
+
+\begin{align*}\begin{split}
+&~~~~i=C_1\frac{du}{dt}+C_2\frac{du}{dt}=(C_1+C_2)\frac{du}{dt}\\\\
+&\Longrightarrow\boxed{C_{eq}=C_1+C_2}
+\end{split}\end{align*}
+
+\bigskip
+\bigskip
+\bigskip
+
+\item En série :
+
+\end{itemize}
+
+\begin{talign*}\begin{circuitikz}
+        \draw (0, 0)
+            to [short, i=$i$] (1, 0)
+            to [C, l^=$C_1$, v_<=$u_1$] (2, 0)
+            to [C, l^=$C_2$, v_<=$v_2$] (3, 0)
+            -- (4, 0);
+        \draw (1, 1)
+            to [open, v^<=$u$] (3, 1);
+\end{circuitikz}\end{talign*}
+
+On pose alors :
+
+
+\begin{tabular}{M{10cm} M{2cm} M{4cm}}
+\begin{align*}\begin{split}
+u=u_1+u_2\\\\
+~~~~\Longrightarrow \frac{du}{dt}=\frac{du_1}{dt}+\frac{du_2}{dt}
+\end{split}\end{align*}
+&
+Or on a :
+&
+\begin{align*}\begin{split}
+\frac{du}{dt}=\frac{i}{C_1}+\frac{i}{C_2}
+\end{split}\end{align*}
+\end{tabular}
+
+\begin{align*}\begin{split}
+&~~~~\frac{du}{dt}=\Bigl(\frac{1}{C_1}+\frac{1}{C_2}\Bigl)i\\\\
+&\Longrightarrow\boxed{\frac{1}{C_{eq}}=\frac{1}{C_1}+\frac{1}{C_2}}
+\end{split}\end{align*}
+
+\bigskip
+\bigskip
+\bigskip
+
+\subsubsection*{Condensateur réel}
+
+Le modèle du condensateur présenté ci-avant fonctionne bien, mais on observe plusieurs différences dans la réalité. Par exemple, si on laisse un condensateur chargé, sans générateur, durant un certain temps, il se déchargera naturellement. En réalité, il faudrait modéliser le condensateur selon :
+
+
+\begin{tabular}{M{4cm} M{4cm} M{4cm}}
+
+    \begin{talign*}\begin{circuitikz}
+        \draw (0, 0)
+        to [short, o-] (0, -1)
+        to [C, l=C] (0, -2)
+        to [short, -o] (0, -3);
+    \end{circuitikz}\end{talign*}
+
+    & $$\Longleftrightarrow$$ &
+
+    \begin{talign*}\begin{circuitikz}
+        \draw (0, 0)
+        -- (2, 0)
+        -- (2, -1)
+        to [R, l=$R$] (2, -2)
+        -- (2, -3)
+        -- (0, -3)
+        -- (0, -2)
+        to [C] (0, -1)
+        -- (0, 0);
+        \draw (1, 0) to [short, -o] (1, 1);
+        \draw (1, -3) to [short, -o] (1, -4);
+    \end{circuitikz}\end{talign*}
+
+\end{tabular}
+
+\bigskip
+
+Bien que sauf mention contraire, il ne sera pas nécessaire d'utiliser ce modèle dans un exercice, sauf mention contraire de l'énoncé (On laissera rarement un condensateur à vide).
+
+\newpage
+
+\subsubsection*{Expériences}
+
+\begin{itemize}
+    \item     On abaisse le premier interrupteur seulement pour charger le condensateur, puis l'on abaisse le deuxième condensateur. Le moteur tourne alors, alimenté seulement par le condensateur :
+    
+    \bigskip
+
+    \begin{talign*}\begin{circuitikz}
+        \draw (0, 0)
+        -- (0, 1)
+        to [vsource] (0, 2)
+        -- (0, 3)
+        -- (1, 3)
+        to [closing switch] (2, 3)
+        -- (5, 3)
+        -- (5, 2)
+        to node[elmech](motor){M} (5, 1)
+        -- (5, 0)
+        -- (0, 0);
+        \draw (3, 3)
+        -- (3, 2)
+        to [C] (3, 1)
+        -- (3, 0);
+    \end{circuitikz}\end{talign*}
+        
+    \bigskip
+    \bigskip
+    \bigskip
+
+    \item On abaisse l'interrupteur, puis on le relève. On remarque que la l'ampoule $D_1$ brille un instant puis s'éteint. On peut expliquer cela par l'idée que durant un certain régime transitoire, le condensateur se charge et un courant passe dans $D_1$. Puis, lorsque le condensateur est chargé, le courant passant par $D_1$ devient nul, et celui passant par $D_2$ est total.
+
+    \begin{talign*}\begin{circuitikz}
+        \draw (0, 0)
+        -- (0, 1)
+        -- (1, 1)
+        to [lamp, l=$D_1$] (2, 1)
+        -- (3, 1)
+        to [C] (4, 1)
+        -- (5, 1)
+        -- (5, 0)
+        -- (3, 0)
+        to [lamp, l=$D_2$] (2, 0)
+        -- (0, 0);
+        \draw (0, 0)
+        -- (0, -1)
+        -- (2, -1)
+        to [closing switch] (3, -1)
+        -- (5, -1)
+        -- (5, 0);
+    \end{circuitikz}\end{talign*}
+\end{itemize}
+
+\bigskip
+\bigskip
+\bigskip
+
+\subsection{La bobine}
+
+\subsubsection*{Modèle et relation constitutive d'une bobine idéale}
+
+\begin{tabular}{M{7cm} M{2cm} M{2cm}}
+    \begin{talign*}\begin{circuitikz}
+        \draw (0, 0)
+        to [short, i^=$i(t)$] (1, 0)
+        to [L, v^=$u(t)$, l_=$L$] (2, 0)
+        -- (3, 0);
+    \end{circuitikz}\end{talign*}
+        
+    & $\Longrightarrow$ &
+
+    \begin{align*}\begin{split}
+        u=L\frac{di}{dt}
+    \end{split}\end{align*}
+\end{tabular}
+
+\bigskip
+\bigskip
+
+On nomme $L$ l'inductance, que l'on mesure en $V.A^{-1}.s=\Omega.s=H$ en henry.
+\\\\
+\note{Pour l'instant, on admet cette relation, que l'on démontrera plus tard dans un chapitre d'électro-magnétisme.}
+
+\bigskip
+
+\subsubsection*{Équivalent en continu}
+
+\begin{align*}\begin{split}
+\begin{cases}
+    u&=\text{cste}\\
+    i&=\text{cste}
+\end{cases}\\\\
+\Longrightarrow \frac{di}{dt}&=0\\\\
+\Longrightarrow \boxed{u=L\frac{di}{dt}=0}
+\end{split}\end{align*}
+
+\subsubsection*{Énergie emmagasiné}
+
+
+\begin{talign*}\begin{circuitikz}
+    \draw (0, 0)
+    to [short, i=$i$] (1, 0)
+    to [L, v<=$u$, l=$L$] (2, 0);
+\end{circuitikz}\end{talign*}
+
+\begin{align*}\begin{split}
+p(t)=u(t)i(t)
+\end{split}\end{align*}
+
+\bigskip
+
+L'énergie consommée entre 2 instants $t_1$ et $t_2$ est alors :
+
+\bigskip
+
+\begin{align*}\begin{split}
+\Es_{t_1\rightarrow t_2}&=\int_{t_1}^{t_2}p(t)dt = \int_{t_1}^{t_2}Li\frac{di}{dt}dt\\\\
+\Longrightarrow& \boxed{\Es_{t_1\rightarrow t_2} = \frac{1}{2}Li^2(t_2)-\frac{1}{2}Li^2(t_1)}
+\end{split}\end{align*}
+
+Cette équation, de même que pour le condensateur, suggère que l'on peut attribuer à une bobine parcourue par un courant $i$ une énergie potentielle donnée par la relation :
+
+\begin{align*}\begin{split}
+\Es_l=\frac{1}{2}Li^2
+\end{split}\end{align*}
+
+Cette énergie est emmagasiné sous forme de champ magnétique dans le volume de la bobine.
+
+\subsubsection*{Comportement}
+
+\begin{itemize}
+    \item récepteur si $|i|\nearrow$
+    \item générateur si $|i|\searrow$
+\end{itemize}
+
+Conséquence importante : continuité du courant $i$ qui traverse une bobine.
+
+
+\subsubsection*{Associations}
+
+\begin{itemize}
+    \item En série :
+
+    \begin{talign*}\begin{circuitikz}
+        \draw (8, 6) to[cute inductor, l=$L_2$, v<=$u_2$] (10, 6);
+        \draw[draw] (6, 6) -- (5, 6);
+        \draw[draw] (10, 6) -- (11, 6);
+        \draw (6, 6) to[cute inductor, l={$L_1$}, v<=$u_1$, label distance=0.02cm] (8, 6);
+        \draw (6, 5) to [open, v<=$u$] (10, 5);
+    \end{circuitikz}\end{talign*}
+    
+    \begin{align*}\begin{split}
+        u=u_1+u_2=L_1\frac{di}{dt}+L_2\frac{di}{dt}=(L_1+L_2)\frac{di}{dt}
+    \end{split}\end{align*}
+
+    \item En parallèle (rarement utilisé) :
+    
+    \remind{Schéma 7}
+
+    \begin{align*}\begin{split}
+        i&=i_1+i_2\\\\
+        \Longrightarrow \frac{di}{dt}&=\frac{di_1}{dt}+\frac{di_2}{dt}\\\\
+        \Longrightarrow \frac{di}{dt}&=(\frac{1}{L_1}+\frac{1}{L_2})u\\\\
+        \Longrightarrow L_{eq}=\frac{L_1L_2}{L_1+L_2}
+    \end{split}\end{align*}
+\end{itemize}
+
+
+\subsubsection*{Bobine réelle}
+
+Puisque une bobine est composé d'une longueur parfois grande devant sa résistivité, on ne peut négliger sa résistance. On modélise donc :
+
+\remind{Schéma 8}
+
+On a alors :
+
+\begin{itemize}
+    \item bobine idéale : $u=L\frac{di}{dt}$\\
+    \item bobine réalle : $u=L\frac{di}{dt}-ri$
+\end{itemize}
+
+
+\subsubsection*{Conséquence de la continuité du courant}
+
+Si l'on "force" une discontinuité du courant, par exemple en frottant un fil à un lime, de très fortes tensions peuvent apparaître (5V à 500V), ce qui peut être dangereux, pour nous ou pour des composants électroniques.
+
+\newpage
+\fancyhead[L]{EC2 - Exemples de cicrcuits du premier ordre}
+\section{Exemples de cicrcuits du premier ordre}
+
+\subsection{Circuit RC en régime libre}
+
+Position du problème :
+
+\remind{Schéma 1}
+
+Pour $t<0$, on a $u(t)=U_0 \neq 0$. À $t=0$, on ferme K. On cherche à modéliser $u(t)$ et $i(t)$.
+
+\bigskip
+
+On schématise :
+
+\remind{Schéma 11}
+
+On peut alors en déduire les équations \underline{en $0^+$+} :
+
+\begin{align*}\begin{split}
+u&=Ri\\\\
+i&=-C\frac{du}{dt}\\\\
+u&=-RC\frac{du}{dt}\\\\
+\frac{du}{dt}-\frac{1}{RC}u&=0\\\\
+\frac{du}{dt}-\frac{u}{\tau}&=0
+\end{split}\end{align*}
+
+en posant $\tau=RC$ le temps caractéristique du circuit RC. On reconnait alors une équation différentielle homogène, du premier ordre et à coefficient constant. On peut donc en déduire l'ensemble des solutions par continuité de $u$ :
+
+\begin{align*}\begin{split}
+u(t)=\lambda e^{-\frac{t}{\tau}}
+\end{split}\end{align*}
+
+On a donc $U_0=\lambda$, et donc finalement,
+
+\begin{align*}\begin{split}
+u(t)=U_0e^{-\frac{t}{\tau}}
+\end{split}\end{align*}
+
+Et :
+
+\begin{align*}\begin{split}
+i(t)=\frac{u}{R}=\frac{U_0}{R}e^{-\frac{t}{\tau}}
+\end{split}\end{align*}
+
+On trouve les constantes d'intégrations grâce aux conditions initiales déterminées par les continuités. On peut donc en déduire les courbes de $u(t)$ et $i(t)$ :
+
+\remind{Schéma 12}
+
+On remarque aussi que :
+
+\begin{align*}\begin{split}
+u(\tau)=\frac{U_0}{e}=0,37U_0
+\end{split}\end{align*}
+
+On peut alors se demander au bout de combien de temps a-t-on $1\%$ de la charge initiale. On pose :
+
+\begin{align*}\begin{split}
+u(x)=\frac{U_0}{100}&=U_0e^{-\frac{t}{x}}\\\\
+e^{\frac{x}{\tau}}=100\\\\
+x=\tau\ln100\approx=4,6\tau\approx 5\tau
+\end{split}\end{align*}
+
+On peut donc en déduire que par convention, la durée du régime est transitoire est de $5\tau$.
+
+\subsubsection{Aspect énergétique}
+
+$$E_c = \frac{1}{2}Cu^2\\E_c(t)=\frac{1}{2}CU_0^2e^{\frac{-2t}{\tau}}$$
+
+\remind{Schéma 13}
+
+La constante de temps de l'énergie vaut donc $\frac{\tau}{2}$.
+
+$$\frac{du}{dt}+\frac{u}{t}=0$$
+
+Donc :
+
+\begin{align*}\begin{split}
+u\frac{du}{dt}+\frac{u^2}{\tau}&=0\\\\
+\frac{d}{dt}\Bigl(\frac{1}{2}u^2\Bigl)+\frac{2}{\tau}\frac{u^2}{2}&=0\\\\
+\frac{dE_c}{dt}+\frac{E_c}{\tau/2}&=0
+\end{split}\end{align*}
+
+\begin{align*}\begin{split}
+\end{split}\end{align*}
+
+\subsubsection{Bilan énergétique}
+
+Le condensateur fournit une énergie égale à :
+
+\begin{align*}\begin{split}
+E_c(0)-E_c(\infty)=C.U_0^2
+\end{split}\end{align*}
+
+qui est équivalente à l'énergie reçue par la résistance :
+
+\begin{align*}\begin{split}
+p_R(t)=Ri^2(t)\\\\
+p_R(t)=\frac{U_0^2}{R}e^{\frac{-2t}{\tau}}
+\end{split}\end{align*}
+
+\begin{align*}\begin{split}
+E_R &= \int_{t=0}^{\infty}p_R(t)\dt\\\\
+&= \int_{0}^{\infty}\frac{U_0^2}{R}e^{\frac{-2t}{\tau}}dt\\\\
+&= \frac{U_0^2}{R}\Bigl[\frac{-\tau}{2}e^{\frac{-2t}{\tau}}\Bigl]\\\\
+&= \frac{U_0^2}{R}\times\frac{\tau}{2}=\frac{U_0^2\times RC}{2R}=\frac{1}{2}CU_0^2
+\end{split}\end{align*}
+
+\subsection{Réponse d'un circuit RC série à un échelon de tension (réponse indicielle)}
+
+\subsubsection{Position du problème}
+
+\remind{Schéma 14}
+
+On suppose que pour $t<0, u(t)=0$ (le condensateur condensateur). À $t=0$, on ferme l'interrupteur K. On veut étudier la charge du condensateur par la source à travers $R$, c'est à dire modéliser $u(t)$ et $i(t)$, ainsi que l'aspect énergétique.
+
+\subsubsection{Analyse à $t=0^+$}
+
+\remind{Schéma 15}
+
+Puisque la tension est continue aux bornes du condensateur, on a $u(0^+)=0$, il se comporte donc alors comme un fil. Par loi des mailles, on peut en déduire par loi des mailles :
+
+\begin{align*}\begin{split}
+E=Ri(0^+) \Longrightarrow i(0^+)=\frac{E}{R}
+\end{split}\end{align*}
+
+\subsubsection{À $t=\infty$}
+
+On se pose alors en régime continu. Le condensateur est alors modélisable en un interrupteur ouvert.
+
+\remind{Schéma 16}
+
+\begin{align*}\begin{split}
+t(\infty)=0 \Longrightarrow u(\infty)=E
+\end{split}\end{align*}
+
+\subsubsection{Équation différentielle pour $t>0$}
+
+Puisque la tension $u(t)$ est continue aux bornes du condensateur, il vaut mieux d'abord déterminer $u(t)$.
+
+
+Par loi des mailles, on pose :
+
+\begin{itemize}
+    \item $i=C\frac{du}{dt}$
+    \item $Ri+u=E$
+\end{itemize}
+
+On pose donc, avec $\tau=RC$ :
+
+\begin{align*}\begin{split}
+RC\frac{du}{dt}+u=E\\\\
+\frac{du}{dt}+\frac{1}{\tau}u=\frac{E}{\tau}
+\end{split}\end{align*}
+
+On peut donc en déduire l'ensemble des solutions :
+
+\begin{align*}\begin{split}
+S=\Bigl\{t\longrightarrow\lambda e^{\frac{-t}{\tau}} + E, ~~~~\lambda\in\R\Bigl\}
+\end{split}\end{align*}
+
+
+Or nos conditions initiales posent que $u(0^+)=0$. On peut donc en déduire que $\lambda=-E$. On peut alors en conclure que :
+
+
+\begin{align*}\begin{split}
+\boxed{u(t)=E(1-e^{\frac{-t}{\tau}})}
+\end{split}\end{align*}
+
+\begin{align*}\begin{split}
+i=\frac{E-u}{R}\\\\
+\Longrightarrow \boxed{i(t)=\frac{E}{R}e^{\frac{-t}{\tau}}}
+\end{split}\end{align*}
+
+\subsubsection{Aspect énergétique}
+
+L'énergie fournie par la source vaut :
+
+
+\begin{align*}\begin{split}
+p_G(t)=E.i(t)\\\\
+\Es_G=\int_{0}^{\infty}p_G(t)dt = E\int_{0}^{\infty}\frac{dq}{i(t)dt}
+\end{split}\end{align*}
+
+\remind{Schéma 17}
+
+\begin{align*}\begin{split}
+\Es_G=E\Bigl[q(\infty)-q(0)\Bigl] = E\Bigl[Cu(\infty)-Cu(0)\Bigl]
+\Longrightarrow \boxed{\Es_G=CE^2}
+\end{split}\end{align*}
+
+Or l'énergie reçue par le condensateur vaut :
+
+\begin{align*}\begin{split}
+\Es_C=\frac{1}{2}Cu^2(t)-\frac{1}{2}Cu^2(0)=\frac{1}{2}CE^2
+\Longrightarrow \boxed{\Es_C = \frac{1}{2}\Es_G}
+\end{split}\end{align*}
+
+\subsubsection{Énergie dissipée dans la résistance}
+
+On note la puissance dissipée dans la résistance :
+
+\begin{align*}\begin{split}
+p_R(t)=Ri^2=\frac{E^2}{R}e^\frac{-2t}{\tau}
+\end{split}\end{align*}
+
+On peut alors en déduire :
+
+\begin{align*}\begin{split}
+E_R=\int_{0}^{\infty}p_R(t)dt = \dots = \frac{1}{2}CE^2\\\\
+\Longrightarrow \Es_G=\Es_C+\Es_R
+\end{split}\end{align*}
+
+Ainsi, quelque soit la valeur de la résistance, l'énergie dissipée dans la résistance est égale à l'énergie reçue par le condensateur.
+
+On pourrait penser qu'il peut se poser un problème si l'on pose une résistance de valeur de résistance nulle, par exemple un fil. En réalité, un fil aura toujours une valeur de résistance, aussi faible soit-elle. L'intensité du courant sera alors très importante, mais durant un court instant.
+
+\subsection{Réponse d'un circuit RL série à un échelon de tension}
+
+\subsubsection{Position du problème}
+
+\remind{Schéma 18}
+
+
+
+\end{document}

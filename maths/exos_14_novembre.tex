@@ -1,0 +1,167 @@
+\documentclass{article}
+
+\input{lib.tex}
+
+\title{Exercices Du TD de Mathématiques}
+\author{Adam, Lilian, Raphaël, Yoan}
+
+\begin{document}
+\maketitle
+
+\underline{Exercice 10 :}
+
+Soit $f$ une fonction définie et dérivable sur $\R$. On pose :
+
+\begin{align}\begin{split}
+\forall x\in\R f'(x)&=f(-x)\\\\
+\Longrightarrow \forall x\in\R f''(x)&=f'(-x)=-f'(x)\\\\
+\Longrightarrow \forall x\in\R f''(x)+f'(x)&=0
+\end{split}\end{align}
+
+Déterminons l'ensemble des solutions de cette équation différentielle. On pose pour cela l'équation caractéristique dans $\C$ :
+
+\begin{align*}\begin{split}
+r^2+1=0
+\end{split}\end{align*}
+
+On a alors $r_1=i$ et $r_2=-i$. On peut alors en déduire l'ensemble des solutions :
+
+\begin{align*}\begin{split}
+\boxed{\Ss_1=\Bigl\{\lambda e^{it}+\mu e^{-it}, (\lambda,\mu)\in\K \Bigl\}}
+\end{split}\end{align*}
+
+\bigskip
+\bigskip
+\bigskip
+
+Soit $f:\begin{cases}\R\longrightarrow\K \\ t\longrightarrow \lambda e^{it} + \mu e^{-it}\end{cases}$ une fonction dérivable sur $\R$ et :
+
+\begin{align*}\begin{split}
+\forall x\in\R, f'(x)=\lambda ie^{it}-\mu ie^{-it}\\
+\end{split}\end{align*}
+
+On pose alors :
+
+\begin{align*}\begin{split}
+\forall x\in\R, f'(x)&=f(-x)\\\\
+\Longleftrightarrow \lambda i e^{it}-\mu ie^{-it} &= \lambda e^{it}+\mu e^{-it}\\\\
+\Longleftrightarrow \lambda e^{it} - i\lambda e^{it} +\mu e^{-it} + i\mu e^{-it}&=0\\\\
+\Longleftrightarrow \lambda - i\lambda +\mu e^{-2it}(1+i)&=0\\\\
+\Longleftrightarrow \lambda-i\lambda +\mu(\cos(-2t)+i\sin(-2t))(1+i)&=0\\\\
+\Longleftrightarrow \lambda-i\lambda +\mu(\cos(2t)-i\sin(2t))(1+i)&=0\\\\
+\Longleftrightarrow \lambda-i\lambda +\mu\cos(2t)-i\mu\sin(2t)+i\mu\cos(2t)+\mu\sin(2t)&=0\\\\
+\Longleftrightarrow \begin{cases}
+\lambda+\mu(\cos(2t)+\sin(2t))&=0\\
+-\lambda+\mu(cos(2t)-sin(2t))&=0
+\end{cases}\\\\
+\end{split}\end{align*}
+
+Posons alors $x=0$ :
+
+\begin{align*}\begin{split}
+&\Longrightarrow \begin{cases}
+    \lambda + \mu(1+0)=0\\
+    -\lambda + \mu(1-0)=0
+\end{cases}\\\\
+&\Longrightarrow \begin{cases}
+    \lambda = -\mu\\
+    \lambda = \mu
+\end{cases}\\\\
+&\Longrightarrow \begin{cases}
+    \lambda = 0\\
+    \mu = 0
+\end{cases}
+\end{split}\end{align*}
+
+Finalement, on peut en conclure que l'ensemble des fonctions qui vérifient $\forall x\in\R, f'(x)=f(-x)$ est :
+
+\begin{align*}\begin{split}
+\Ss = \boxed{\Bigl\{x\longrightarrow 0\Bigl\}}
+\end{split}\end{align*}
+
+\bigskip
+\bigskip
+\bigskip
+
+\underline{Exercice 7 :}
+
+\bigskip
+\bigskip
+\bigskip
+
+On pose :
+
+\begin{align*}\begin{split}
+z=\frac{1}{y}\Longrightarrow z'=\frac{-y}{y^2}
+\end{split}\end{align*}
+
+Ainsi, $\forall x\in]0;+\infty[$ :
+
+\begin{align*}\begin{split}
+xy'+3y&=x^2y^2\\
+\Longleftrightarrow -\frac{xy'}{y^2}-3\frac{1}{y}&=x^2\\
+\Longleftrightarrow xz'-3z&=-x^2\\
+\Longleftrightarrow z'-\frac{3}{x}z&=-x
+\end{split}\end{align*}
+
+\begin{align*}\begin{split}
+\Ss_0=\Bigl\{\lambda e^{3\ln(x)}, \lambda\in\K\Bigl\}=\Bigl\{\lambda x^3, \lambda\in\K\Bigl\}
+\end{split}\end{align*}
+
+\bigskip
+\bigskip
+
+Soit $y:\begin{cases}\R\longrightarrow\K\\x\longrightarrow\lambda(x)x^3\end{cases}$. On pose :
+
+\begin{align*}\begin{split}
+y\in\Ss &\Longleftrightarrow \lambda(x)'x^3=x\\
+&\Longleftrightarrow \lambda(x)'=-\frac{1}{x^2}\\
+\end{split}\end{align*}
+
+On pose alors :
+
+\begin{align*}\begin{split}
+\lambda(x)=\frac{1}{x}
+\end{split}\end{align*}
+
+On peut donc en déduire l'ensemble des solutions :
+
+\begin{align*}\begin{split}
+\Ss_1=\Bigl\{x\longrightarrow\lambda x^3+\frac{1}{x}, \lambda\in\K\Bigl\}
+\end{split}\end{align*}
+
+Or on a $y\frac{1}{z}$. On peut donc en déduire l'ensemble des solutions possibles :
+
+\begin{align*}\begin{split}
+\Ss_2=\Bigl\{x\longrightarrow\frac{1}{\lambda x^3+x^2},\lambda\in\K\Bigl\}
+\end{split}\end{align*}
+
+\bigskip
+\bigskip
+\bigskip
+
+Synthèse : Déterminons maintenant les fonctions $y$ solutions. Soit $y\in\Ss$. On a $y$ dérivable et :
+
+\begin{align*}\begin{split}
+\forall x\in\R, y'(x)=\frac{-3\lambda x^2+2x}{(\lambda x^3+x^2)^2}
+\end{split}\end{align*}
+
+\begin{align*}\begin{split}
+xy'+3y&=x^2y^2\\\\
+\Longleftrightarrow \frac{-3\lambda x^3 + 2x^2}{(\lambda x^3+x^2)^2}+\frac{3}{\lambda x^3+x^2}&=\frac{x^2}{\lambda x^3+x^2}\\\\
+\Longleftrightarrow \frac{-3\lambda x^3 + 2x^2}{\lambda x^3+x^2}+3&=x^2\\\\
+\Longleftrightarrow -3\lambda x^3 + 2x^2 +3\lambda x^3 + 3\lambda x^2 - x^2&=0\\\\
+\Longleftrightarrow 3\lambda x^2+x^2 &= 0\\\\
+\Longleftrightarrow 3\lambda + 1 &= 0\\\\
+\Longleftrightarrow& \boxed{\lambda = -\frac{1}{3}}
+\end{split}\end{align*}
+
+Finalement, l'ensemble de l'équation $xy'+3y=x^2y^2$ est :
+
+\begin{align*}\begin{split}
+\Ss=\Bigl\{\frac{1}{-\frac{1}{3}x^3+x^2}\Bigl\}\\\\
+\Longrightarrow \boxed{\Ss=\Bigl\{-\frac{3}{x^3+3x^2}\Bigl\}}
+\end{split}\end{align*}
+
+
+\end{document}
