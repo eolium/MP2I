@@ -65,7 +65,7 @@ Un condensateur est fourni de 2 armatures conductrices, séparées par un isolan
         to [short, -o] (3, 0);
 \end{circuitikz}\end{talign*}
 
-\subsubsection*{Relation charge/tension et capacité}
+\subsubsection{Relation charge/tension et capacité}
 
 \bigskip
 \bigskip
@@ -88,7 +88,7 @@ avec :
 \end{itemize}
 \end{tabular}
 
-\subsubsection*{Relation constitutive}
+\subsubsection{Relation constitutive}
 
 \bigskip
 \bigskip
@@ -122,7 +122,7 @@ Le condensateur est alors équivalent à un interrupteur ouvert.
 \bigskip
 \bigskip
 
-\subsubsection*{Aspect énergétique}
+\subsubsection{Aspect énergétique}
 
 \begin{talign*}\begin{circuitikz}
     \draw (0, 1.5) to [open, l_=$C$] (3, 1.5);
@@ -175,7 +175,7 @@ $\longrightarrow$ Conséquence importante : Par principe de conservation de l'é
 \bigskip
 \bigskip
 
-\subsubsection*{Association de condensateurs}
+\subsubsection{Association de condensateurs}
 
 \begin{itemize}
 
@@ -265,7 +265,7 @@ Or on a :
 \bigskip
 \bigskip
 
-\subsubsection*{Condensateur réel}
+\subsubsection{Condensateur réel}
 
 Le modèle du condensateur présenté ci-avant fonctionne bien, mais on observe plusieurs différences dans la réalité. Par exemple, si on laisse un condensateur chargé, sans générateur, durant un certain temps, il se déchargera naturellement. En réalité, il faudrait modéliser le condensateur selon :
 
@@ -303,7 +303,7 @@ Bien que sauf mention contraire, il ne sera pas nécessaire d'utiliser ce modèl
 
 \newpage
 
-\subsubsection*{Expériences}
+\subsubsection{Expériences}
 
 \begin{itemize}
     \item     On abaisse le premier interrupteur seulement pour charger le condensateur, puis l'on abaisse le deuxième condensateur. Le moteur tourne alors, alimenté seulement par le condensateur :
@@ -361,7 +361,7 @@ Bien que sauf mention contraire, il ne sera pas nécessaire d'utiliser ce modèl
 
 \subsection{La bobine}
 
-\subsubsection*{Modèle et relation constitutive d'une bobine idéale}
+\subsubsection{Modèle et relation constitutive d'une bobine idéale}
 
 \begin{tabular}{M{7cm} M{2cm} M{2cm}}
     \begin{talign*}\begin{circuitikz}
@@ -387,7 +387,7 @@ On nomme $L$ l'inductance, que l'on mesure en $V.A^{-1}.s=\Omega.s=H$ en henry.
 
 \bigskip
 
-\subsubsection*{Équivalent en continu}
+\subsubsection{Équivalent en continu}
 
 \begin{align*}\begin{split}
 \begin{cases}
@@ -398,7 +398,7 @@ On nomme $L$ l'inductance, que l'on mesure en $V.A^{-1}.s=\Omega.s=H$ en henry.
 \Longrightarrow \boxed{u=L\frac{di}{dt}=0}
 \end{split}\end{align*}
 
-\subsubsection*{Énergie emmagasiné}
+\subsubsection{Énergie emmagasiné}
 
 
 \begin{talign*}\begin{circuitikz}
@@ -430,7 +430,7 @@ Cette équation, de même que pour le condensateur, suggère que l'on peut attri
 
 Cette énergie est emmagasiné sous forme de champ magnétique dans le volume de la bobine.
 
-\subsubsection*{Comportement}
+\subsubsection{Comportement}
 
 \begin{itemize}
     \item récepteur si $|i|\nearrow$
@@ -440,7 +440,7 @@ Cette énergie est emmagasiné sous forme de champ magnétique dans le volume de
 Conséquence importante : continuité du courant $i$ qui traverse une bobine.
 
 
-\subsubsection*{Associations}
+\subsubsection{Associations}
 
 \begin{itemize}
     \item En série :
@@ -470,7 +470,7 @@ Conséquence importante : continuité du courant $i$ qui traverse une bobine.
 \end{itemize}
 
 
-\subsubsection*{Bobine réelle}
+\subsubsection{Bobine réelle}
 
 Puisque une bobine est composé d'une longueur parfois grande devant sa résistivité, on ne peut négliger sa résistance. On modélise donc :
 
@@ -484,7 +484,7 @@ On a alors :
 \end{itemize}
 
 
-\subsubsection*{Conséquence de la continuité du courant}
+\subsubsection{Conséquence de la continuité du courant}
 
 Si l'on "force" une discontinuité du courant, par exemple en frottant un fil à un lime, de très fortes tensions peuvent apparaître (5V à 500V), ce qui peut être dangereux, pour nous ou pour des composants électroniques.
 
@@ -710,7 +710,110 @@ On pourrait penser qu'il peut se poser un problème si l'on pose une résistance
 
 \subsubsection{Position du problème}
 
-\remind{Schéma 18}
+\remind{Corriger schéma}
+
+%\begin{talign*}\begin{circuitikz}
+%    \draw (8, 6) to[rmeter, v<=$E$] (8, 4);
+%    \draw (8, 6) to[cute closing switch] (11, 6);
+%    \draw (11, 6) to[european resistor, i>=$i(t)$] (14, 6);
+%    \draw (14, 6) to[cute inductor, v<=$u_L(t)$] (14, 4);
+%    \draw[draw] (14, 4) -- (8, 4);
+%\end{circuitikz}\end{talign*}
+
+\subsubsection{À $t=0^+$}
+
+On a à $t=0^+$, $i(0^+)=i(0^-)=0$ par coutinuité du courant dans la bobine
+
+\remind{Corriger schéma}
+
+%\begin{talign*}\begin{circuitikz}
+%    \draw (7, 6) to[rmeter, v>=$E$] (7, 9);
+%    \draw (7, 9) to[european resistor, i>=$i(0^+)=0$, v<=$Ri(0^+)=0$] (11, 9);
+%    \draw (11, 9) to[switch, v<=$u_L(0^+)=E$] (11, 6);
+%    \draw[draw] (11, 6) |- (7, 6);
+%\end{circuitikz}\end{talign*}
+
+
+On a alors :
+
+\begin{align*}\begin{split}
+    u_L(0^+) = L\frac{di}{dt}=\frac{E}{L}
+\end{split}\end{align*}
+
+\subsubsection{Équation différentielle pour $t>0$}
+
+On pose d'abord :
+
+\begin{itemize}
+    \item LM : $u_L+Ri=E$
+    \item relation de la bobine : $u_L=L\frac{di}{dt}$
+\end{itemize}
+
+On peut alors en déduire :
+
+\begin{align*}\begin{split}
+\frac{di}{dt}+\frac{R}{L}=i\frac{E}{L}
+\end{split}\end{align*}
+
+On pose alors : $\tau=\frac{L}{R}$ la constante de temps du circuit. On pose donc :
+
+\begin{align*}\begin{split}
+\frac{di}{dt}+\frac{i}{\tau}=\frac{E}{R\tau}
+\end{split}\end{align*}
+
+On en déduit l'ensemble des solutions :
+
+\begin{align*}\begin{split}
+\boxed{i(t)=\frac{E}{R}+\lambda e^\frac{-t}{\tau}}
+\end{split}\end{align*}
+
+avec $\lambda$ une constante que l'on détermine par les conditions initiales.
+
+\bigskip
+
+\underline{Condition initiale} : $i(0^+)=0$
+
+On peut alors en déduire : $\lambda=-\frac{E}{R}$. On peut finalement en conclure que :
+
+\begin{align*}\begin{split}
+\boxed{i(t)=\frac{E}{R}\Bigl(1-e^\frac{-t}{\tau}\Bigl)}
+\end{split}\end{align*}
+
+Donc :
+
+\begin{align*}\begin{split}
+    u_L=L\frac{di}{dt}=E-Ri\\\\
+    \boxed{u_L(t)=E e^\frac{-t}{\tau}}
+\end{split}\end{align*}
+
+\remind{Faire les schémas des courbes $i_L(t)$ et $u_L(t)$}
+
+\subsubsection{Bilan énergétique}
+
+Puisque la bobine laisse complètement passer le courant à la fin du régime transitoire, il est absurde de se demander quelle est la quantité d'énergie reçue finalement. On peut simplement poser :
+
+\begin{align*}\begin{split}
+\Es=\frac{1}{2}Li^2(+\infty) - \cancel{\frac{1}{2}Li^2(0)}\\\\
+\Es_i=\frac{1}{2}\frac{L}{R}\frac{E^2}{R}\\\\
+\boxed{\Es_L=\frac{1}{2}\frac{\tau}{R}E^2}
+\end{split}\end{align*}
+
+
+\subsection{Circuit RL en régime libre}
+
+
+\section{Exemples de circuit du second ordre}
+
+\subsection{Oscillattions électriques dans un circuit LC en régime libre}
+
+\subsubsection{Position du problème}
+
+\remind{Schéma : condensateur C -> interrupteur K -> bobine L. Le tout en série}
+
+\begin{itemize}
+    \item $t<0 \Longrightarrow i(t)=0, u_L(t)=0$
+    \item $t=0$ : on ferme K. Que se passe-t-il alors ?
+\end{itemize}
 
 
 
