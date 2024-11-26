@@ -808,6 +808,21 @@ Puisque la bobine laisse complètement passer le courant à la fin du régime tr
 
 \subsubsection{Position du problème}
 
+
+\begin{talign*}\begin{circuitikz}
+    \draw (0, 0)
+    -- (1, 0)
+    to [closing switch] (2, 0)
+    to [short, i>=$i(t)$] (3, 0)
+    -- (3, -1)
+    to [inductor, l=$L$, v<=$u_L(t)$] (3, -2)
+    -- (3, -3)
+    -- (0, -3)
+    -- (0, -2)
+    to [C, v<=$u(t)$] (0, -1)
+    -- (0, 0);
+\end{circuitikz}\end{talign*}
+
 \remind{Schéma : condensateur C -> interrupteur K -> bobine L. Le tout en série}
 
 \begin{itemize}
@@ -816,5 +831,175 @@ Puisque la bobine laisse complètement passer le courant à la fin du régime tr
 \end{itemize}
 
 
+\subsubsection{Équations différentielles pour $u$ et $i$ ($t\ge0$)}
+
+\begin{align*}\begin{split}
+\begin{cases}
+u(t)=u_L(t)\\
+u_L=L\frac{di}{dt}\\
+i=-C\frac{du}{dt}
+\end{cases}
+\end{split}\end{align*}
+
+On en déduit les dérivées secondes :
+
+\begin{align*}\begin{split}
+u=-LC\frac{d^2u}{dt^2}\\\\
+i=-LC\frac{d^2i}{dt^2}
+\end{split}\end{align*}
+
+On peut donc en conclure 2 équations différentielles du second ordre :
+
+\begin{align*}\begin{split}
+    \boxed{\frac{d^2u}{dt^2}+\frac{1}{LC}u=0}\\\\
+    \boxed{\frac{d^2i}{dt^2}+\frac{1}{LC}i=0}
+\end{split}\end{align*}
+
+qui sont toutes les deux des équa. diff. linéaire, du 2nd ordre, homogènes et à coefficients constnats, sans terme d'ordre 1.
+\\
+On pose alors $[LC]=T^2$, et donc $\omega_0=\frac{1}{\sqrt{LC}}$ qui est l'inverse d'un temps.
+
+On en déduit donc :
+
+\begin{align*}\begin{split}
+    \frac{d^2u}{dt^2}+\omega_0^2u=0
+\end{split}\end{align*}
+
+\subsubsection{Équation caractéristique}
+
+\begin{align*}\begin{split}
+    r^2+\omega_0^2=0\\\\
+    \longrightarrow \boxed{r= jw_0}
+\end{split}\end{align*}
+
+Donc l'ensemble des solutions dans $\C$ est :
+
+\begin{align*}\begin{split}
+u(t)=Ae^{j\omega_0t}+Be^{-j\omega_0t}, (A, B)\in\C
+\end{split}\end{align*}
+
+On en déduit l'ensemble des solutions dans $\R$ :
+
+\begin{align*}\begin{split}
+u(t)=\Re\Bigl(Ae^{j\omega_0t}+Be^{-j\omega_0t}\Bigl)\\\
+\longrightarrow u(t)=A\cos(\omega_0t)+B\sin(\omega_0t), (A, B)\in\R
+\end{split}\end{align*}
+
+On souhaite simplifier l'expression de $u(t)$. On pose donc :
+
+\begin{align*}\begin{split}
+K\cos(\omega_0t+\varphi)=K\cos(\varphi)\cos(\omega_0t)-K\sin(\varphi)\sin(\omega_0t), K\ge0\\\\
+\Longleftrightarrow \begin{cases}
+    A=K\cos(\varphi)\\
+    B=-K\sin(\varphi)
+\end{cases}
+\Longleftrightarrow \begin{cases}
+    K=\sqrt{A^2+B^2}
+    \varphi=-\arctan\Bigl(\frac{B}{A}\Bigl)
+\end{cases}
+\end{split}\end{align*}
+
+\note{Un peu de magie noire...}
+
+On peut simplement en déduire l'expression de $u$ :
+
+\begin{align*}\begin{split}
+    u(t)=K\cos(\omega_0t+\varphi), (K\ge0, \varphi)\in\R
+\end{split}\end{align*}
+
+\subsubsection{Fonction sinusoïdale (harmonique)}
+
+L'équation $\frac{d^2u}{dt^2}+\omega_0^2u=0$ est celle d'un \underline{oscillateur harmonique}. Ses solutions sont des fonctions sinusoïdales de la forme :
+
+\begin{align*}\begin{split}
+u(t)=Kcos(\omega_0t+\varphi), K\ge0, \varphi\in[0, 2\pi]
+\end{split}\end{align*}
+
+On cherche la période $\Delta$ tel que $\forall t$ :
+
+\begin{align*}\begin{split}
+u(t+\Delta)=u(t)\\\\
+\longrightarrow \omega_0\Delta = 2k\pi, k\in\Z\\\\
+\Longrightarrow T_0=\frac{2\pi}{\omega_0}
+\end{split}\end{align*}
+
+\begin{itemize}
+    \item $K$ s'appelle l'amplitude.
+    \item La période est $\boxed{T_0=\frac{2\pi}{\omega_0}}$
+    \item La fréquence est donc : $\boxed{f_0=\frac{1}{T_0}=\frac{\omega_0}{2\pi}}$
+    \item $\omega_0$ s'appelle la pulsation et s'exprime en $rad.s^{-1}$
+    \item $\varphi(t)=\omega_0t+\varphi$ est la phase du signal.
+    \item $\varphi=\omega_0t_0$ est la phase à l'origine (avec $t_0$ le premier instant ou la fonction est maximale).
+\end{itemize}
+
+
+\subsubsection{Retour au problème initial}
+
+\begin{align*}\begin{split}
+u(t)=K\cos(\omega_0t+\varphi)
+\end{split}\end{align*}
+
+On souhaite maintenant trouver $K$ et $\varphi$ grâce aux conditions initiales :
+
+\begin{align*}\begin{split}
+\begin{cases}
+    i(0^+)=0\\
+    u(0^+)=U_0
+\end{cases}\\\\
+\longrightarrow \frac{du}{dt}(0^+)=0\\\\
+\longrightarrow
+\begin{cases}
+    K\cos(\varphi)=U_0, U_0\ge0\\
+    \frac{du}{dt}=-K\omega_0\sin\varphi=0
+\end{cases}\\\\
+\longrightarrow
+\begin{cases}
+    K=U_0
+    \varphi=0
+\end{cases}
+\end{split}\end{align*}
+
+On peut finalement en déduire :
+
+\begin{align*}\begin{split}
+u(t)=U_0\cos(\omega_0t)
+\end{split}\end{align*}
+
+On peut donc en déduire les caractéristiques du circuit :
+
+\begin{itemize}
+    \item $\omega_0$ : pulsation propre
+    \item $T_0$ : période propre
+    \item $f_0$ : fréquence propre
+\end{itemize}
+
+On peut alors en déduire le courant en posant :
+
+\begin{align*}\begin{split}
+i(t)=-C\frac{du}{dt}\\\\
+\Longrightarrow i(t)=CU_0\omega_0\sin(\omega_0 t) = U_0 \frac{C}{\sqrt{LC}}\omega_0\sin(\omega_0t)\\\
+\Longrightarrow \boxed{i(t)=U_0\sqrt{\frac{C}{L}}\sin(\omega_0t)}
+\longrightarrow \boxed{i(t)=U_0\sqrt{\frac{C}{L}}\cos(\omega_0t-\frac{\pi}{2})}
+\end{split}\end{align*}
+
+On remarque que $i$ et $u$ sont décalés dans le temps de $\frac{pi}{2}$. On dit que $i$ est en \underline{quadrature-retard} par rapport à $u$ (retard d'un quart de période). $u$ est donc en \underline{quadrature-avance} par rapport à $i$.
+
+
+\subsubsection{Aspect énergétique}
+
+On a :
+
+\begin{align*}\begin{split}
+\Es_C=\frac{1}{2}Cu^2=\frac{1}{2}CU_0^2\cos^2(\omega_0t)\\
+\Es_L=\frac{1}{2}Li^2=\frac{1}{2}CU_0^2\sin^2(\omega_0t)\\
+\end{split}\end{align*}
+
+Ainsi, on peut en déduire :
+
+\begin{align*}\begin{split}
+\Es_{TOT}(t)=E_C+E_L=\frac{1}{2}CU_0^2=\Es_{TOT}(0)
+\end{split}\end{align*}
+
+On en conclut que le circuit n'a pas consommé d'énergie, ce qui se traduit par le fait qu'il a seulement stocké de l'énergie, puisqu'il ne contient aucune résistance (on a négligé ici la résistance des fils).
 
 \end{document}

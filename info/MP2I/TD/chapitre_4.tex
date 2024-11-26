@@ -1,0 +1,43 @@
+\documentclass{article}
+
+\input{lib.tex}
+
+\begin{document}
+
+\underline{Exercice 1 :}
+
+\bigskip
+\bigskip
+\bigskip
+
+1) Montrons que la fonction renvoie $n!$.
+
+\begin{itemize}
+    \item Si $n=0$, alors $f$ renvoie 0 qui vaut $0!$.
+    \item Si $n=1$, alors $f$ renvoie 1 qui vaut $1!$.
+    \item Si $n=2$, alors $f$ renvoie 2 qui vaut $2!$.
+    \item Supposons que $f$ renvoie $n!$ pour $n$, et montrons qu'elle renvoie $n!$ pour $n+3$. On pose :
+
+    \begin{align*}\begin{split}
+        f(n) = n\times(n-1)\times(n-2)\times f(n-3) = n\times(n-1)\times(n-2)\times n! = (n+3)!
+    \end{split}\end{align*}
+
+    Ainsi, pour tout $n\geq 3$, $f(n)=n!$.
+\end{itemize}
+
+Finalement, on a montré que $\forall n\in\N, f(n)=n!$.
+
+\bigskip
+\bigskip
+
+2) Montrons que la fonction termine. Pour $n\in\{0, 1, 2\}$, la fonction termine et correspond à l'identité. Soit $n\geq 3$. Supposons que $f$ termine pour $n-3$. Or $f(n)$ renvoie $n\times(n-1)\times(n-2)\times f(n-3)$, et termine donc.
+
+En somme, $\forall n\in\N$, $f(n)$ termine.
+
+\bigskip
+\bigskip
+
+3) La fonction réalise au total $O(n)$ appels récursifs, de complexité respectives $O(1)$. Ainsi, sa complexité est en $O(n)$.
+
+
+\end{document}
