@@ -112,8 +112,37 @@ Mais communautés forment une mixité qui semble positive, dans la limite de l'e
 
 - Égalitarisme : Égalité à tout prix -> inéquité.
 
+**+ MÉTHODO SUR LE RÉSUMÉ**
+
 ## 14 novembre
 
 Conseil pour le résumé : mise en apposition:
     "cet élève est intelligent et ne rate jamais..."
         -> "intelligent, cet élève ne rate jamais..."
+
+**+ EXERCICE DE RÉSUMÉ**
+
+## 28 novembre
+
+> "Je suis facteur, je ne gère pas les colles.", M. Authier
+
+**FICHE MÉTHODE SUR L'ANALYSE D'UNE PAGE DE ROMAN**
+
+
+Correction du DS :
+
+- Oscillations de l'omniscience du narrateur, qui tend vers le point de vue des personnages (en particulier Newland Archer)
+
+	-> Caractère incertain de la focalisation, 0 vers interne -> Connivence entre le narrateur et Newland Archer.
+
+- C'est un portrait -> En réthorique, il passe par :
+	- la prosopographie : portrait physique
+	- l'éthopée : portrait moral
+
+- Oscillation entre objectivité et subjectivité, qui traite de la **gémélité : Thématique du double**
+
+- Lexique péjoratif pour les traits physique (prosopographie) mais qui multiplie des indices de subjectivité qui créent un comique de situation, qui dénotent sur le protrait moral
+	-> Critique du conformisme, du nivellement et d'une standardisation des individus de la haute-société (qui constitue possiblement le talon d'Achille : la soumission des individus), qui est tout de même brisé en partie par la jeune génération.
+
+
+-> Tonalité/visée satirique.
