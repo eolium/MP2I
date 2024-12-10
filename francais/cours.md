@@ -146,3 +146,63 @@ Correction du DS :
 
 
 -> Tonalité/visée satirique.
+
+
+## 3 décembre
+
+
+Exemple : Extrait du TdI (cf contrôle), portrait charge sur la base du conformisme entre Miss et Mrs Archer
+    -> passage de la focalisation 0 à interne, avec POV du frère Newland Archer.
+        **Phénomène d'individualisation du narrateur**
+
+        Le narrateur parle au travers des yeux de Newland.
+
+
+Le narrateur est présent, mais pas nécessairement omniprésent. Ici, il s'abrite derrière le point de vue de Newland Archer
+
+PB : Quelle est la latitude (marge de manoeuvre, part de liberté) du "je" en tant qu'individu, qui est donné ici comme une machine à produire le semblable.
+
+L'expression de soi est ici présenté comme marginale. C'est la voie de la communauté qui compte, plus que la voie de l'individu.
+
+-> On y voit un lien entre la psychée (ce qui constitue la personne, mentale ou physique) et le "moi"
+
+Le processus de socialisation est donc un désastre pour l'individualité. Cette société est cohercitive.
+
+> Individuation : prise de conscience de sa propre individualité
+
+-> Se fait par l'éducation.
+
+Dans un univers social qui ne conduit pas les individus à s'exprimer, à découvrir leur individualité personnelle, mais qui les bride à suivre les normes sociales,
+la socialisation l'emporte sur l'individuation.
+
+La quête aristocratique de l'honneur s'est transformée en une quête de l'honorabilité, de la respectabilité, de la bourgeoisie -> culte des apparences, du paraître.
+Dans un tel contexte, il ne faut pas s'individualiser, et rester dans la mesure, dans la bienséance.
+
+**L'Identique est la sclérose de l'Identité.**
+
+Si l'identité correspond à la prise en compte de caractéristiques permanentes, cela ne suffit pas à expliquer ce goût pour l'identique.
+
+**L'identité, ce n'est pas l'identique.**
+
+La part la plus originale du "moi" est barrée, par un système de répression, alors ne subsistent que les apparences.
+
+> Anomie : absence de règles, de lois
+
+utilisé pour le genre romanesque, genre littéraire de la liberté, sans règles.
+
+**Le problème d'être soi, mais d'imposer une image de soi qui soit conforme à ce qu'un penseur récent a appelé "La société du spectacle".**
+
+Cf Incipit, à l'opéra : Mise en abîme de la société du théâtre.
+
+> Éthos : l'attitude, le comportement. Construction verbale de sa propre image.
+
+Chacun de nous construit sa propre éthos, pour autrui.
+
+
+
+### Second extrait
+
+L'extrait est polyphonique, il fait entendre plusieurs voies -> La voie de la Doxa
+
+> La Doxa (terme de Platon) : L'opinion publique.
+

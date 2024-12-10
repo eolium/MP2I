@@ -29,12 +29,12 @@ Une page de roman appelle obligatoirement des niveaux de sens. On en compte 3, q
 
 Il y a donc 2 questions rituels à se poser :
 
-- Qui voit ?
+- Qui voit ? Qui parle ?
     - Statut du narrateur ?
         > Plan diégétique (au sens diégèse)
-        - hétérodiégétique : Le narrateur n'a pas vécu les éléments qu'il raconte
-        - homodiégétique : Le narrateur a vécu les éléments qu'il raconte
-        - autodiégétique : homo + c'est sa vie qu'il raconte
+        - **hétérodiégétique** : Le narrateur n'a pas vécu les éléments qu'il raconte
+        - **homodiégétique** : Le narrateur a vécu les éléments qu'il raconte
+        - **autodiégétique** : homo + c'est sa vie qu'il raconte
 
     - Angle, Point de vue du narrateur ? -> Focalisation
         - Focalisation 0 : POV omniscient
@@ -42,7 +42,6 @@ Il y a donc 2 questions rituels à se poser :
         - Focalisation externe : Le narrateur en sait plus qu'il n'en dit
 
         | A retravailler *(pas compris x))* )
-
 
     - 2 Régimes de narrations :
         - régime mimétique -> sens de "mimesis" (imitation des choses et des réalités)
@@ -61,4 +60,5 @@ Il y a donc 2 questions rituels à se poser :
             - La gestion du temps
             - L'intrigue, l'action
             - Psychologie des personnages
-- Qui parle ?
+
+> Portrait charge : portrait qui prête sinon à rire du moins sourire, par les traits physiques et/ou moraux

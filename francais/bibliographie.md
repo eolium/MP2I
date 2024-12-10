@@ -7,3 +7,4 @@
 | Roman | Georges Orwell | 1984 |
 | --- | Paul Valéry | texte sur les civilisations (comme les civilisations, les démocraties sont mortelles) |
 | --- | Pierre Rosanvallon | Les Institutions invisibles |
+| --- | Guy de Bord | La société du spectacle |

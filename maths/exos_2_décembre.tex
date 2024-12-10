@@ -1,0 +1,40 @@
+\documentclass{article}
+
+\input{lib.tex}
+
+\title{Exercices Du TD de Mathématiques}
+\author{Arnaud, Hugo, Ki Mi, Raphaël, Yoan}
+
+\begin{document}
+\maketitle
+
+\underline{Exercice 9 :}
+
+1) Soit $a$ un élément de $G$ d'ordre fini. On pose alors :
+
+\begin{align*}\begin{split}
+\exists n\in\N^*/a^n=e \Longrightarrow (a^{-1})^n=(a^n)^{-1}=e
+\end{split}\end{align*}
+
+Ainsi, $a^{-1}$ est d'ordre fini. Notons $p\in\N^*$ l'ordre de $a^{-1}$, tel que $\boxed{n\leq p}$. On a alors puisque $a^{-1}$ est d'ordre $p$ :
+
+\begin{align*}\begin{split}
+(a^{-1})^p=e \Longrightarrow a^p=((a^{-1})^{-1})^p=((a^{-1})^p)^{-1}=e^{-1}=e
+\end{split}\end{align*}
+
+Ainsi, $a$ est d'ordre inférieur ou égal à $p$, donc $\boxed{n\leq p}$.
+
+Finalement, on a : $\boxed{n=p}$.
+
+\bigskip
+
+2) Soit $(a, b)\in G^2$, tels que $a$ est d'ordre fini. On pose :
+
+\begin{align*}\begin{split}
+\exists n\in\N^*/a^n=e \Longrightarrow (bab^{-1})^n = ba^nb^{-1}=beb^{-1}=bb^{-1}=e 
+\end{split}\end{align*}
+
+Ainsi, $bab^{-1}$ est d'ordre fini, que l'on notera $p$, avec $\boxed{p\leq n}$.
+On pose ensuite :
+
+\end{document}
