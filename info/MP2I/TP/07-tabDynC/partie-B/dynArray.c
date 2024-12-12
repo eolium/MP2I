@@ -107,3 +107,9 @@ int dyn_pop(dynArray* d) {
 
     return out;
 }
+
+void dyn_concat(dynArray* a, dynArray* b) {
+    for (int i = 0; i < b->len; i++) {
+        dyn_append(a, dyn_get(b, i));
+    }
+}

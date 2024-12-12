@@ -60,5 +60,8 @@ void dyn_append(dynArray* d, int x);
 int dyn_pop(dynArray* d);
 
 
+/* Entre les élements de b dans a */
+void dyn_concat(dynArray* a, dynArray* b);
+
 
 #endif

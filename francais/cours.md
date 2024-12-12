@@ -206,3 +206,67 @@ L'extrait est polyphonique, il fait entendre plusieurs voies -> La voie de la Do
 
 > La Doxa (terme de Platon) : L'opinion publique.
 
+L'extrait est ici extrêmement proche du dénouement, le personnage est alors placé sous le signe d'un dilemme
+
+On est alors dans un environnemenet qui porte la marque des dieux sur les Hommes, l'univers de la transcendance.
+
+- Dilemme tragique :
+
+	= Impasse
+
+	-> Choix ? Dépassé par la question de l'honneur
+
+
+
+> Transcendance : "trans-ire", aller au delà des choses, ou de soi-même
+
+> Immanence : "in maneo", rester dans le cadre de l'expérience existencielle de l'Homme
+
+
+Lorsque l'immanence est remise en cause, l'Homme va au delà de son existence, il devient irrémédiable, inexorable, irrévocable, etc...
+
+La pensée tragique suppose donc que l'Homme est écrasé par les évènements, et présente celui qui renonce, et celui qui résiste tant qu'il le peut, dans l'honneur.
+
+Ainsi, 3 générations se suivent, et du fait de l'injonction bafouée par Laïos, ces 3 générations sont frappées de malédictions.
+
+Les héros sont caractérisés par l'adoption d'une position qui témoigne d'une nouvelle dimension, c'est l'émergence de l'individu.
+
+Effet de concaténation : effet en cascade de la malédiction
+
+**Dans la configuration de la tragédie grecque, nous mesurons bien ce que peut être le poids du destin, et finalement ce que peut être la revendication du héro d'une conscience individuelle.**
+
+Pourtant, la cité ne donne pas de droits particuliers à l'individu. Dès l'instant ou le personnage désobéit à la loi, il affirme ses propres droits en remettant en cause les lois de la cité, et devient un héro.
+
+*Conscience, liberté, devoir, n'est-ce pas devenir un individu moderne ?*
+
+
+Dans une joute verbale, lorsque un personnage se mesure à un autre personnage, il y a **agôn** ($\alpha\gamma\omega v$)
+
+- Il y a un donc 3 règles impérieuses mais incompatibles :
+	- Religieuse : interdiction du fratricide (pas sympa)
+	- Familiale : imprécation farouche d'un père qui condamne son fils
+	- Civique : sauver la cité en combattant les argiens
+
+
+-> Dilemme morale insoluble (tuer ? ne pas tuer ?)
+
+Étéocle dans cette page, met en oeuvre une transcendance individuelle, en sortant de la transcendance première, il définit ce qu'est son devoir premier.
+
+
+L'Homme est donc celui qui définit ses droits et devoirs.
+
+-> Démarche, quête héroïque.
+
+**Tout cela implique qu'il y a une différence majeure entre le début et la fin de l'extrait. C'est ce qu'on appelle l'Épiphanie, le passage de l'ombre à la lumière**
+
+Il y a donc une dimension aristocratique chez tous les héros, qui montrent leur honorabilité : **arêté** ($\alpha\rho\epsilon\tau\eta$). Ainsi, malgré son destin, le héro agit dans l'honneur, il est chevaleresque. On appelle cela **la quête de l'arêté**, réaliser l'excellence.
+
+Cependant, dans un dialogue de Socrate, l'arêté est traduit par la vertu. En effet, réaliser en soi la perfection, c'est réaliser en soi la vertu.
+
+**Il y a donc la situation initiale de l'extrait, et la situation finale.**
+
+On passe d'un personnage écrasé, accablé, véritablement tragique, sous le joug des émotions, à un personnage qui va vouloir assurer sa propre maitrîse. Quand on est souverain, il faut être souverain en tout, y compris en soi-même. En tant que monarque de la cité, il a besoin d'assurer une souveraineté émotionelle et morale, il dépasse donc cette situation.
+
+Il réalise finalement une **épistrophè** ($\epsilon\pi\iota\omicron\rho\omega\varphi\eta$). Il se tourne vers la galvanisation plutôt que dans la crainte.
+
+Cela passe par la disqualification véhémente de Polynice, avec un **registre épidictique**.

@@ -1,0 +1,71 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+
+\hypersetup{
+    hidelinks,
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Table des matières},
+}
+
+\input{lib.tex}
+
+\geometry{hmargin=2.2cm, vmargin=3.7cm}
+
+\pagestyle{fancy}
+\fancyhead[L]{EC2 - Régime transitoire des circuits linéaires}
+\fancyhead[R]{Yoan de CORNULIER}
+
+\title{Cinétique : Suite du cours}
+\date{}
+
+\begin{document}
+
+\subsubsection{Système de coordonnées cylindriques}
+
+
+Pour décrire certains mouvements, on préférera un autre système de coordonnées, basé sur les coordonnées polaires. On pose :
+
+\begin{align*}\begin{split}
+\begin{cases}
+    r = OH\in\R\\\\
+    \theta = \Bigl(\overrightarrow{u_x},\overrightarrow{OH}\Bigl)\in[0;2\pi[ \text{ou} ]-\pi;\pi]\\\\
+    z\in\R
+\end{cases}
+\end{split}\end{align*}
+
+On se demande alors quelle est la base du système (BOND). On pose :
+
+\begin{align*}\begin{split}
+\overrightarrow{u_r}=\frac{\overrightarrow{OH}}{OH}
+\end{split}\end{align*}
+
+\bigskip
+\bigskip
+
+\subsubsection*{Lien entre coordonnées cartésiennes et polaires}
+
+On a :
+
+\begin{align*}\begin{split}
+\begin{cases}
+    r=\sqrt{x^2+y^2}\\\\
+    \theta=\begin{cases}
+        \arctan\frac{y}{x},x>0\\
+        \arctan\frac{y}{x}+\pi,x<0\\
+    \end{cases}
+\end{cases}
+\end{split}\end{align*}
+
+On peut alors poser :
+
+\begin{align*}\begin{split}
+\overrightarrow{u_r}=\cos\theta\overrightarrow{u_x}+\sin\theta\overrightarrow{u_y}
+\overrightarrow{u_\theta}=-\sin\theta\overrightarrow{u_x}+\cos\theta\overrightarrow{u_y}
+\end{split}\end{align*}
+
+
+\end{document}
