@@ -11,9 +11,9 @@ int max(int a, int b) {
 
 dynArray dyn_create(unsigned len, int x) {
     dynArray d =  {
-        .arr = (int*) malloc(len * sizeof(int)),
+        .arr = (int*) malloc((len + 1) * sizeof(int)),
         .len = len,
-        .len_max = max(2, len),
+        .len_max = len + 1
     };
 
     for (unsigned i = 0; i < len; i++) {
@@ -30,14 +30,16 @@ void dyn_free(dynArray* d) {
 dynArray dynarray_of_array(unsigned len, int const* ptr) {
     dynArray d = dyn_create(len, 0);
 
-    free(d.arr);
-
-    d.arr = (int*) ptr;
+    for (unsigned i = 0; i < len; i++) {
+        d.arr[i] = ptr[i];
+    }
 
     return d;
 }
 
 int dyn_get(dynArray const* d, unsigned i) {
+    assert (i < d->len);
+
     return d->arr[i];
 }
 
@@ -46,11 +48,18 @@ unsigned dyn_len(dynArray const* d) {
 }
 
 void dyn_print(dynArray const* d) {
-    for (unsigned i = 0; i < d->len-1; i++) {
-        printf("%d\n", d->arr[i]);
+    if (d->len == 0) {
+        printf("[| |]");
+        return;
     }
 
-    printf("%d", d->arr[d->len-1]);
+    printf("[|");
+
+    for (unsigned i = 0; i < (d->len)-1; i++) {
+        printf("%d, ", dyn_get(d, i));
+    }
+
+    printf("%d|]", dyn_get(d, dyn_len(d)-1));
 }
 
 void dyn_set(dynArray* d, unsigned i, int x) {
@@ -62,15 +71,17 @@ void dyn_append(dynArray* d, int x) {
         // On crée un nouveau tableau de taille len_max*2
         int* new_tab = (int*) malloc(2 * d->len_max * sizeof(int));
 
-        for (unsigned i = 0; i < d->len_max; i++) {
+        for (unsigned i = 0; i < d->len; i++) {
             new_tab[i] = dyn_get(d, i);
         }
 
+        dyn_free(d);
+
         d->arr = new_tab;
-        d->len+=1;
         d->len_max*=2;
     }
 
+    d->len+=1;
     dyn_set(d, d->len-1, x);
 }
 
@@ -81,17 +92,18 @@ int dyn_pop(dynArray* d) {
 
     d->len-=1;
 
-    if (d->len * 4 == d->len_max) {
-        int* new_tab = (int*) malloc(d->len * 2);
+    /*if (d->len * 4 < d->len_max) {
+        d->len_max = 2*d->len;
 
-        for (unsigned i = 0; i < d->len * 2; i++) {
+        int* new_tab = (int*) malloc(d->len_max * sizeof(int));
+
+        for (unsigned i = 0; i < d->len; i++) {
             new_tab[i] = dyn_get(d, i);
         }
 
         dyn_free(d);
         d->arr = new_tab;
-        d->len_max = 2*d->len;
-    }
+    }*/
 
     return out;
 }
