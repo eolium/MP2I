@@ -68,4 +68,136 @@ On peut alors poser :
 \end{split}\end{align*}
 
 
+\subsubsection*{Concernant $d\overrightarrow{u_r}\dt$ :}
+
+On pose :
+
+\begin{align*}\begin{split}
+\overrightarrow{u_r}.\overrightarrow{u_r}=1\\
+2\frac{d\overrightarrow{u_r}}{dt}.\overrightarrow{u_r}=0\\
+\longrightarrow \frac{d\overrightarrow{u_r}}{dt}\perp\overrightarrow{u_r}
+\end{split}\end{align*}
+
+On en déduit :
+
+\begin{align*}\begin{split}
+d\overrightarrow{u_r}=k\times\overrightarrow{u_\theta}\\
+d\overrightarrow{u_r}=d\theta\overrightarrow{u_r}\\
+\end{split}\end{align*}
+
+D'où :
+
+\begin{align*}\begin{split}
+\boxed{\frac{d\overrightarrow{u_r}}{dt}=\dot{\theta}\overrightarrow{u_\theta}}
+\end{split}\end{align*}
+
+De même :
+
+\begin{align*}\begin{split}
+\frac{d\overrightarrow{u\theta}}{dt}=-\dot{\theta}\overrightarrow{u_r}
+\end{split}\end{align*}
+
+On peut donc en conclure :
+
+\begin{align*}\begin{split}
+\boxed{\overrightarrow{v}=\dot{r}\overrightarrow{u_r}+r\dot{\theta}\overrightarrow{u_\theta}+\dot{z}\overrightarrow{u_z}}
+\end{split}\end{align*}
+
+
+\subsubsection*{Expression de l'accélération :}
+
+On pose :
+
+\begin{align*}\begin{split}
+v=\sqrt{\dot{r}^2+r^2\dot{\theta}^2+\dot{z}^2}\\
+\boxed{d\overrightarrow{l}=dr\overrightarrow{u_r}+rd\theta\overrightarrow{u_\theta}+dz\overrightarrow{u_z}}
+\end{split}\end{align*}
+
+On en déduit alors sa dérivée :
+
+\begin{align*}\begin{split}
+\overrightarrow{a}=\frac{d\overrightarrow{v}}{dt}=\frac{d}{dt}\Bigl(\dot{r}\overrightarrow{u_r}+r\dot\theta\overrightarrow{u_\theta}+\dot{z}\overrightarrow{u_z}\Bigl)\\
+\overrightarrow{a}=\ddot{r}\overrightarrow{u_r}+\dot{r}\frac{d\overrightarrow{u_r}}{dt}+(\dot{r}\dot{\theta}+r\ddot{theta})\overrightarrow{u_\theta}+r\dot{\theta}\frac{d\overrightarrow{u_\theta}}{dt}+\ddot{z}\overrightarrow{u_z}\\\\
+\boxed{\overrightarrow{a}=(\ddot{r}-r\dot{\theta}^2)\overrightarrow{u_r}+(r\ddot{\theta}+2\dot{r}\dot{\theta})\overrightarrow{u_\theta}+\ddot{z}\overrightarrow{u_z}}
+\end{split}\end{align*}
+
+On simplifie le vecteur accélération (\remind{à apprendre par coeur !}) :
+
+\begin{align*}\begin{split}
+\left(
+\begin{array}{c}
+    \ddot{r}-r\dot{\theta}^2\\
+    r\ddot{\theta}+2\dot{r}\ddot{\theta}\\
+    \ddot{z}
+\end{array}
+\right)
+\end{split}\end{align*}
+
+\subsection{Système de coordonnées et base sphérique :}
+
+Pour se repérer sur Terre, on utilise le système de latitude/longitude, comme suit :
+
+\begin{itemize}
+    \item $\varphi$ : Longitude, défini sur $]-\pi;\pi[$.
+    \item $\lambda$ : Latitude, défini sur $]-\frac{\pi}{2};\frac{\pi}{2}[$
+\end{itemize}
+
+Le système de coordonnées sphérique se pose alors par :
+
+\begin{itemize}
+    \item $r=OM\in\R^+$ : Rayon
+    \item $\theta=\hat(\overrightarrow{u_z},\overrightarrow{OM})\in [0;\pi ]$ : Colatitude
+    \item $\varphi=\hat(\overrightarrow{u_x},\overrightarrow{OH})\in [0;2\pi [$ ou $\in ]-\pi;\pi ]$ : Longitude
+\end{itemize}
+
+\remind{Attention, ici l'angle $\varphi$ correspond à l'angle $\theta$ du système de coordonnées cylindriques}
+
+
+\underline{Remarque : on peut passer du système sphérique au système cartésien ou cylindrique}
+
+\begin{itemize}
+    \item 
+        \begin{align*}\begin{split}
+        r = \sqrt{x^2+y^2+z^2}\\
+        \cos\theta=\frac{z}{\sqrt{x^2+y^2}}\\
+        \tan\varphi=\frac{y}{x}
+        \end{split}\end{align*}
+
+    \item
+        \begin{align*}\begin{split}
+            z=r\cos\theta\\
+            y=r\sin\theta\sin\varphi\\
+            x=r\sin\theta\cos\varphi
+        \end{split}\end{align*}
+\end{itemize}
+
+\underline{Vecteur position :}
+
+$$
+\boxed{\overrightarrow{OM}=r\overrightarrow{u_r}}
+$$
+
+$$
+\boxed{\overrightarrow{OM}=\left(\begin{array}{c}r\\0\\0\end{array}\right)}
+$$
+
+\underline{Vecteur déplacement élémentaire :}
+
+$$
+d\overrightarrow{l}=dr\overrightarrow{u_r}+rd\theta\overrightarrow{u_\theta}+r\sin\theta d\varphi\overrightarrow{u_\varphi}
+$$
+
+On en déduit l'expression du vecteur vitesse :
+
+$$
+\boxed{\overrightarrow{v}=\dot{r}\overrightarrow{u_r}+r\dot{\theta}\overrightarrow{u_\theta}+r\sin\theta\dot{\varphi}\overrightarrow{u_\varphi}}
+$$
+
+On peut alors l'exprimer plus simplement :
+
+$$\left(\begin{array}{c}\dot{r}\\r\dot{\theta}\\r\sin\theta\dot{\varphi}\end{array}\right)_\text{sph}$$
+
+\section{Base de Frénet :}
+
+
 \end{document}
