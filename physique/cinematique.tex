@@ -197,7 +197,42 @@ On peut alors l'exprimer plus simplement :
 
 $$\left(\begin{array}{c}\dot{r}\\r\dot{\theta}\\r\sin\theta\dot{\varphi}\end{array}\right)_\text{sph}$$
 
-\section{Base de Frénet :}
+\section{Base de Frénet : (2D)}
+
+\subsubsection*{Abscisse curviligne}
+
+$s(t)$ est la distance parcourue le long de $\Ts$ le mouvement. On en déduit la base de Frénet :
+
+\begin{itemize}
+    \item $\overrightarrow{u_T}$ vecteur tangeant à $\Ts$ dans le sens du mouvements
+    \item $\overrightarrow{u_n}$ vecteur unitaire normal à $\Ts$ dirigié vers la concavité de $\Ts$.
+\end{itemize}
+
+La base est donc mobile, locale et intrinsèque.
+
+\subsubsection*{Vecteur déplacement élémentaire}
+
+$$ds(t) = s(t+dt)-s(t)$$
+
+$$\boxed{d\overrightarrow{l}=ds\overrightarrow{u_T}}$$
+
+\underline{Vecteur vitesse}
+
+$$\boxed{\overrightarrow{v}=\dot{s}\overrightarrow{u_T}}\Longrightarrow\boxed{v=\frac{ds}{dt}}
+\Longrightarrow
+\boxed{\overrightarrow{v}=\left(\begin{array}{c}\dot{s}\\0\end{array}\right)}$$
+
+Vecteur accélération :
+
+$$
+\overrightarrow{a}=\frac{d\overrightarrow{v}}{dt}
+\Longrightarrow \overrightarrow{a}=\ddot{s}\overrightarrow{u_T}+\dot{s}\frac{d\overrightarrow{u_T}}{dt}
+$$
+
+Comme $||\overrightarrow{u_T}||=1$ (constante) en $a$, on a :
+
+$$\frac{d\overrightarrow{u_T}}{dt} = k\times\overrightarrow{u_N}$$
+
 
 
 \end{document}

@@ -15,10 +15,7 @@ def cout(t: list) -> int:
         [t[1], t[3]]
     ])
 
-    M2 = np.array([
-        [t[4]],
-        [t[5]]
-    ])
+    M2 = np.array()
 
     print(M1)
 
