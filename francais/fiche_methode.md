@@ -62,3 +62,4 @@ Il y a donc 2 questions rituels à se poser :
             - Psychologie des personnages
 
 > Portrait charge : portrait qui prête sinon à rire du moins sourire, par les traits physiques et/ou moraux
+

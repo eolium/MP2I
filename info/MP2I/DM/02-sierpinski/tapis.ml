@@ -38,30 +38,23 @@ let prof_max : int =
 (** Les dimensions (en pixels) de la fenêtre graphique *)
 let x_max = 1500  (* largeur de la fenêtre (horizontale) *)
 let y_max = 700   (* hauteur de la fenêtre (verticale)   *)
-let y_marge = 100 (* marge verticale au-dessus et en-dessous du triangle *)
 
 
 (** Les coordonnées des trois sommets a b et c du triangle. *)
 let semi_base : int = (* maths d'un triangle *)
-  int_of_float ( (float_of_int (y_max - 2*y_marge)) *. Float.tan (Float.pi /. 6.) ) 
-let a : point = 
-  (x_max/2, y_max-1 - y_marge)
-let b : point = 
-  (x_max/2 - semi_base, 0 + y_marge)
-let c : point = 
-  (x_max/2 + semi_base, 0 + y_marge)
+  int_of_float ( (float_of_int y_max) *. Float.tan (Float.pi /. 6.) ) 
 
+let a : point = (x_max / 3, y_max / 3)
+let b : point = (2 * x_max / 3, y_max / 3)
+let c : point = (x_max / 3, 2 * y_max / 3)
+let d : point = (2 * x_max / 3, 2 * y_max / 3)
 
 (** Fonction qui crée une fenêtre graphique à l'aide des
-  * paramètres ci-dessus, crée dedans le triangle abc
-  * et remplit ce triangle de noir.
+  * paramètres ci-dessus
   *)
 let init () = 
   let _ = Graphics.open_graph "" in
-  let _ = Graphics.resize_window x_max y_max in
-  let _ = Graphics.set_color Graphics.black in
-  Graphics.fill_poly [|a;b;c|]
- 
+  Graphics.resize_window x_max y_max 
 
 (** Fonction qui attend qu'une des touches de la liste l
   * soit enfoncée. 
@@ -74,13 +67,12 @@ let rec wait_keys (l : char list) : unit =
   if s.keypressed && (List.mem s.key l) then () else wait_keys l
 
 
-(** Fonction qui colorie le triangle uvw avec la
-  * couleur couleur_creux, puis attend 0.5s 
-  *)
-let colorie_creux u v w =
-  let _ = Graphics.set_color couleur_creux in
-  Graphics.fill_poly [|u; v; w|]
-  
+(* Fonction qui remplie un carré *)
+let colorie_carre a b c d =
+  let _ = Graphics.set_color couleur_fond in
+  let _ = Graphics.fill_poly [|a; b; c; d|] in
+  ()
+  (*Unix.sleepf 0.5*)
   
 
 
@@ -93,21 +85,42 @@ let colorie_creux u v w =
 let milieu (x0,y0) (x1,y1) =
   ((x0 + x1) / 2 , (y0 + y1) / 2)
 
-
-(** Creuse le triangle p q r pour en faire un triangle de
-  * Sierpinski de profondeur prof.
-  *) 
+let milieu_2 (x0, y0) (x1, y1) =
+  ((2 * x0 + x1) / 3, (2 * y0 + y1) / 3)
 
 
-let rec sierpinski p q r prof =
-	if prof>0 then
-    let a = milieu p q in
-    let b = milieu q r in
-    let c = milieu p r in
-    let _ = colorie_creux a b c in
-    let _ = sierpinski p a c (prof-1) in
-    let _ = sierpinski a q b (prof-1) in
-    sierpinski c b r (prof-1)
+(**
+  * Remplit un tapis a b c d de Sierpinsky de profondeur prof.
+*)
+
+let rec tapis a b c d prof =
+  if prof > 0 then
+    let m1 = milieu_2 a b in
+    let m2 = milieu_2 b a in
+    let m3 = milieu_2 b c in
+    let m4 = milieu_2 c b in
+    let m5 = milieu_2 c d in
+    let m6 = milieu_2 d c in
+    let m7 = milieu_2 d a in
+    let m8 = milieu_2 a d in
+
+    let a1 = milieu_2 m1 m6 in
+    let a2 = milieu_2 m2 m5 in
+    let a3 = milieu_2 m6 m1 in
+    let a4 = milieu_2 m5 m2 in
+
+    let _ = colorie_carre a1 a2 a3 a4 in
+
+    let _ = tapis a m1 a1 m8 (prof-1) in
+    let _ = tapis m1 m2 a2 a1 (prof-1) in
+    let _ = tapis m2 b m3 a2 (prof-1) in
+    let _ = tapis a2 m3 m4 a3 (prof-1) in
+    let _ = tapis a3 m4 c m5 (prof-1) in
+    let _ = tapis a4 a3 m5 m6 (prof-1) in
+    let _ = tapis m7 a4 m6 d (prof-1) in
+    let _ = tapis m8 a1 a4 m7 (prof-1) in
+    ()
+
 
 
 
@@ -120,6 +133,6 @@ let rec sierpinski p q r prof =
 let _ =
   let _ = init () in
   let _ = wait_keys ['s'; 'S'] in
-  let _ = sierpinski a b c prof_max in
+  let _ = tapis a b c d prof_max in
   let _ = wait_keys ['q'; 'Q'] in
   Graphics.close_graph ()

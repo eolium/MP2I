@@ -270,3 +270,7 @@ On passe d'un personnage écrasé, accablé, véritablement tragique, sous le jo
 Il réalise finalement une **épistrophè** ($\epsilon\pi\iota\omicron\rho\omega\varphi\eta$). Il se tourne vers la galvanisation plutôt que dans la crainte.
 
 Cela passe par la disqualification véhémente de Polynice, avec un **registre épidictique**.
+
+L'idée d'un transfert des violences individuelles à la violence symbolique de l'Etat.
+
+Le concept d'invidu est un concept anachronique par rapport à la cité grecque.
