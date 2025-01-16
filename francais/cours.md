@@ -274,3 +274,49 @@ Cela passe par la disqualification véhémente de Polynice, avec un **registre �
 L'idée d'un transfert des violences individuelles à la violence symbolique de l'Etat.
 
 Le concept d'invidu est un concept anachronique par rapport à la cité grecque.
+
+
+## 9 janvier
+
+La Grèce antique n'est pas un état unifié mais un agrégat de cités autonomes multiples, la plupart du temps en guerre entre elles. Mais petit à petit, une cité, Athènes, s'impose aux autres cités comme capitale de la Grèce antique, et avec elle vient l'essor du théâtre et de la tragédie.
+Vient alors l'éclosion de la démocratie au sein d'Athènes, avec l'ecclesia.
+Il y a malgré tout le sentiment que ces cités appartiennent à une civilisation commune.
+Éléments politiques et religieux
+
+## 16 janvier
+
+Considérons un individu dans son environnement
+
+Dans l'univers d'Eschyle, la communauté est une réalité multiple, donc un ensemble de communautés qu'on peut représenter par des cercles concentriques :
+
+5 - La communauté religieuse et cultuelle, extrêmement contraignante, qui se traduit par la volonté des dieux (que l'on ne connaît jamais vraiment d'ailleurs)
+
+5-bis - La communauté culturelle : l'identité grecque -> malgré toutes leurs différences (sociétés différentes, régimes différentes) -> les grecques parlent la même langue, prient les mêmes dieux
+	-> conscience d'appartenir au monde grecque
+	-> **La dialectique de l'un et du multiple** (cf Platonisme) -> tout ce qui existe apparaît dans le monde sensible n'est que le reflet des idées platoniciennes
+
+4 - La communauté civique et politique -> suppose un rapport complexe et rival au pouvoir 
+
+3 - La famille.
+
+Ainsi, les grecques avant même d'avoir inventé le droit et la loi dans la cité, sont pieux et croyants, d'abord et fondamentalement. Le citoyen devait donc lui-même respecter les dieux et les rites avant la loi.
+	-> Délits d'impiété : $\alpha\sigma\beta\epsilon\iota\alpha$
+
+Mais les dieux eux-même sont soumis à une force.
+
+Distinction de Blaise Pascal :
+	- Esprit de géométrie : esprit rationnel
+	- Esprit de finesse : intuition
+
+Comment l'individu (qui n'existe pas encore) peut-il se singulariser, conquérir une épaisseur d'individu dans un champ anthropologique ?
+	-> Réponse d'Étéocle : le héro
+
+La tragédie apparaît à Athènes à la fin du Vème siècle avant notre ère, elle constitue ce qu'on appelle la synthèse de manifestations, de spectacles, de formes d'expressions cultuelles et spectaculaires. Ces formes vont alors trouver une place nouvelle dans la tragédie, qui constitue la part noble du théâtre, et former un spectacle total.
+
+-> Le texte ne représente que la moitié de la tragédie, de sa représentation théâtrale
+
+Mais cette tradition texto-centriste (tkt c'est un néologisme de fou) nous force à revenir à notre époque à revenir à la définition du théâtre, à ces composantes comme le jeu théâtral, la mise en scène, la diction.
+
+Les premiers soubresauts d'une conscience qui aspire à être autônome -> tous les citoyens athéniens (y compris les femmes) pouvaient se rendre au théâtre pour les tragédies.
+
+-> Dyonisii -> coût imposé à un citoyen riche : la chorégie.

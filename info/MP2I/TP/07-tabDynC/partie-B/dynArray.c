@@ -92,7 +92,7 @@ int dyn_pop(dynArray* d) {
 
     d->len-=1;
 
-    /*if (d->len * 4 < d->len_max) {
+    if (d->len * 4 < d->len_max && d->len_max > 2) {
         d->len_max = 2*d->len;
 
         int* new_tab = (int*) malloc(d->len_max * sizeof(int));
@@ -103,13 +103,13 @@ int dyn_pop(dynArray* d) {
 
         dyn_free(d);
         d->arr = new_tab;
-    }*/
+    }
 
     return out;
 }
 
 void dyn_concat(dynArray* a, dynArray* b) {
-    for (int i = 0; i < b->len; i++) {
+    for (unsigned i = 0; i < b->len; i++) {
         dyn_append(a, dyn_get(b, i));
     }
 }

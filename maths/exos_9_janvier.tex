@@ -1,0 +1,140 @@
+\documentclass{article}
+
+\input{lib.tex}
+
+\title{Exercices Du TD de Mathématiques}
+\author{Arnaud, Hugo, Ki Mi, Raphaël, Yoan}
+
+\begin{document}
+\maketitle
+
+\bigskip
+\bigskip
+
+\underline{Exercice 12 :}
+
+\bigskip
+\bigskip
+
+On pose :
+
+\begin{itemize}
+    \item $f:[0;+\infty[\longrightarrow+\infty$ continue sur $\R$
+    \item $|f|$ tend vers $+\infty$.
+\end{itemize}
+
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+Montrons d'abord que $f$ diverge, puis montrons que $f$ que $f$ tend vers $+\infty$ ou $-\infty$.
+
+\begin{itemize}
+    \item Supposons par l'absurde que $f$ est bornée. Alors :
+    
+    \begin{align*}\begin{split}
+        \exists(A, B)\in\R^2 / \forall x\in\R, A\leq f(x)\leq B\\
+        \Longrightarrow  |f(x)| \leq |A|+|B|
+    \end{split}\end{align*}
+        
+    Ainsi, $f$ est bornée, ce qui est absurde, puisque $f$ tend vers $+\infty$.
+
+    On en conclut que $f$ diverge.
+
+
+    \item On pose :
+    
+    \begin{align*}\begin{split}
+        \lim_{x\rightarrow+\infty}|f(x)|=+\infty\\
+        \Longrightarrow \forall M\geq0,\exists A\ge0/\forall x\ge A,|f(x)|>M\\
+        \Longrightarrow f(x)<-M ~~~\text{ou}~~~ f(x)>M
+    \end{split}\end{align*}
+
+    Supposons par l'absurde que :
+
+    \begin{align*}\begin{split}
+        \exists x>A/f(x)<-M<0\\
+        \exists y>A/f(y)>M>0
+    \end{split}\end{align*}
+
+    or $f$ est continue sur $R$, ainsi par théorème des valeurs intermédiaires, on en déduit :
+
+    \begin{align*}\begin{split}
+        \exists z>A/f(z)=0\\
+        \Longrightarrow \boxed{|f(z)|=0}
+    \end{split}\end{align*}
+    
+    Or :
+
+
+    \begin{align*}\begin{split}
+        \forall x>A, \boxed{|f(x)|>M>0}
+    \end{split}\end{align*}
+
+    On arrive à une absurdité, on en conclut donc que $f$ tend vers $\pm\infty$.
+\end{itemize}
+
+Ainsi, on a montrée que $f$ tend vers $\pm\infty$.
+
+\bigskip
+\bigskip
+\bigskip
+
+\underline{Exercice 17 :}
+
+On pose :
+
+\begin{itemize}
+    \item $f:\R\longrightarrow\R$ une fonction $k$-lipschitzienne ($k\in[0;1[$), telle que $f(0)=0$.
+    \item $a\in\R$.
+    \item $(u_n)\in\R^\N$ telle que $u_0=a$, $\forall n\in\N, u_{n+1}=f(u_n)$.
+\end{itemize}
+
+Montrons que $(u_n)$ converge vers 0.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+$f$ est lipschitzienne, donc :
+
+$$\forall(x, y)\in\R^2, |f(x)-f(y)|\leq k|x-y|$$
+
+En particulier, $\forall n\in\N$ :
+
+\begin{align*}\begin{split}
+|f(x)|\leq k|x|\\
+\Longrightarrow |u_{n+1}|\leq k|u_n|\\
+\end{split}\end{align*}
+
+\bigskip
+
+Montrons alors par récurrence $P(n\in\N):"|u_n|\leq k^n |a|"$.
+
+\begin{itemize}
+    \item Posons $n=0$. Alors :
+    $$|u_0|=|a| \leq |a|$$
+
+    \item Soit $n\in\N/P(n)$ est vraie. On a alors :
+    \begin{align*}\begin{split}
+        |u_n|\leq k^n|a|\\
+        \Longrightarrow |u_{n+1}|\leq k|u_n| \leq k^{n+1} |a|\\
+        \Longrightarrow \boxed{|u_{n+1}|\leq k^{n+1}|a|}
+    \end{split}\end{align*}
+
+    \item En conclusion, on a montré que :
+    
+    $$\forall n\in\N, |u_n|\leq k^n|a|$$
+\end{itemize}
+
+Or la suite $(k^n|a|)$ est géométrique de raison $k\in[0;1[$, donc elle converge vers 0. Ainsi, $|u_n|$ est majorée par une suite qui converge vers 0 et par 0 (par propriétés de la valeur absolue), par théorème de l'encadrement, elle converge donc vers 0.
+
+\bigskip
+
+On a donc montré que $(u_n)$ converge vers 0.
+
+\end{document}

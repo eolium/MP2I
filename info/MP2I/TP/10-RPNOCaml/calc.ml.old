@@ -1,0 +1,41 @@
+(** Calculatrice en notation polonaise inversée *)
+
+
+(** Réalise le calcule récursif. *)
+let rec calcule notation pile =
+  match notation with
+  | [] ->       failwith "TODO"
+  | "+" :: q -> failwith "TODO"
+  | "-" :: q -> failwith "TODO"
+  | "*" :: q -> failwith "TODO"
+  | "/" :: q -> failwith "TODO"
+  | str :: q -> failwith "TODO"
+
+
+(** Réalise le calcul décrit par notation *)
+let calculatrice notation =
+  failwith "TODO"
+
+
+
+
+(** Petit main qui :
+    - lit une ligne (où les termes sont séparés par des espaces),
+    - réalise le calcul correspondant,
+    - affiche le résultat,
+    - recommence
+
+  Entrez "FIN" pour terminer.
+*)
+let main () =
+  let rec loop () =
+    let lgn = Scanf.scanf "%s" Fun.id in
+    if String.uppercase_ascii lgn <> "FIN" then
+      let notation = String.split_on_char ' ' lgn in
+      let resultat = calculatrice notation in
+      let () = Printf.printf "Résulat : %d\n" resultat in
+      loop ()
+  in
+  loop ()
+
+let () = main ()
