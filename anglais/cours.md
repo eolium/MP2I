@@ -1,0 +1,1 @@
+Similarly / Likewise, Klein provides other solutions to account for the need to go beyond academic skills and abilities. She even goes further through the suggestion to accomodate for "socioemotional learning". Klein's concluding statement goes back to the American Dream which has been failing and is deeply endangered / in dire jeopardy, if nothing is done.
