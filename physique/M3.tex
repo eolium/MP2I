@@ -1,0 +1,84 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+
+\hypersetup{
+    hidelinks,
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Table des matières},
+}
+
+\input{lib.tex}
+
+\geometry{hmargin=2.2cm, vmargin=3.7cm}
+
+\pagestyle{fancy}
+\fancyhead[L]{EC2 - Régime transitoire des circuits linéaires}
+\fancyhead[R]{Yoan de CORNULIER}
+
+\title{Mécanique : Partie 3}
+\date{}
+
+\begin{document}
+
+\section{Étude des petites oscillations autour d'une position stable}
+
+\underline{Idée : } Montrer qu'autour d'une position d'équation stable, le mouvement se ramène à une première approximation à celui d'un oscillateur harmonique.
+
+Il faut "paraboliser" le puit de potentiel.
+
+\subsection*{Approximation d'une fonction par un polynôme de degré 2}
+
+\begin{align*}\begin{split}
+f'(x)\approx f'(x_0) + f''(x_0) \times (x-x_0)\\\\
+f(x)\approx f'(x_0)(x-x_0)+\frac{f''(x_0)(x-x_0)^2}{2}+C\\
+\boxed{f(x)\approx f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2}(x-x_0)^2}
+\end{split}\end{align*}
+
+Soit $r=r_{éq}$ une position d'équilibre. On a :
+
+\begin{align*}\begin{split}
+\frac{d\Es_p}{dr}(r_{éq})=0\\
+\Longrightarrow \Es_p\approx\Es_p(r_{éq})+\frac{d\Es_p}{dr}(r_{éq})(r-r_{éq})
+\end{split}\end{align*}
+
+Finalement, on a :
+
+\begin{align*}\begin{split}
+\Es_p(r)\approx\Es_p(r_{éq})+\frac{1}{2}\frac{d^2\Es_p}{dr^2}(r_{éq})(r-r_{éq})
+\end{split}\end{align*}
+
+Or :
+
+\begin{align*}\begin{split}
+\Es_m = \Es_c + \Es_p = C\\\\
+\frac{1}{2}m\dot{r}^2+\Es_p(r_{éq})+\frac{1}{2}\frac{d^2\Es_p}{dr^2}(r_{éq})(r-r_{éq})^2 = C
+\end{split}\end{align*}
+
+Pour simplifier, notons $\epsilon = r-r_0$, alors $\dot{\epsilon}=\dot{r}$.
+
+\begin{align*}\begin{split}
+\frac{1}{2}m\dot{\epsilon}^2+\frac{1}{2}\frac{d^2\Es_p}{dr^2}(r_{éq})\epsilon^2=C
+\end{split}\end{align*}
+
+On dérive par rapport au temps :
+
+\begin{align*}\begin{split}
+m\dot{\epsilon}\ddot{\epsilon}+\frac{d^2\Es_p}{dr^2}(r_{éq})\dot{\epsilon}\epsilon = 0
+\end{split}\end{align*}
+
+
+Finalement, on peut en conclure que :
+
+\begin{align*}\begin{split}
+\boxed{
+\ddot{\epsilon}+\omega^2\epsilon=0,\\
+\omega^2=\frac{\frac{d^2}{}}{}
+}
+\end{split}\end{align*}
+
+
+\end{document}

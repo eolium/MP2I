@@ -1,0 +1,40 @@
+\documentclass{article}
+
+\input{lib.tex}
+
+\title{DM17 de Mathématiques}
+
+\begin{document}
+\maketitle
+
+\underline{Exercice 1 :}
+
+1) Montrons $\forall n\in\N$ $P(n)$:"$\deg(P_n)\leq n$.
+
+INI :
+
+$$\deg{P_0}=\deg{1}=0$$
+++
+HERE :
+
+\begin{align*}\begin{split}
+\deg(P_n)\leq n\Longrightarrow deg(2XP_n)\leq n+1\\
+\begin{cases}
+    \deg(-\frac{1}{n+1}(1+X^2))=2\\
+    \deg(P'_n)\leq n-1
+\end{cases}\\\\
+\Longrightarrow \deg(-\frac{1}{n+1}(1+X^2)P'_n)\leq n+1
+\Longrightarrow \deg(P_{n+1})\leq n+1
+\end{split}\end{align*}
+
+Conclusion : CQFD
+
+\bigskip
+\bigskip
+\bigskip
+
+2)a) Récurrence immédiate :
+
+
+
+\end{document}
