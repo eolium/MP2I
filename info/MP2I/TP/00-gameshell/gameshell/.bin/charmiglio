@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+export MISSION_DIR="$GSH_ROOT/missions/intermediate/05_background"
+export TEXTDOMAIN="intermediate,05_background"
+exec "$GSH_ROOT/missions/intermediate/05_background/charmiglio.sh" "$@"

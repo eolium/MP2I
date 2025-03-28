@@ -1,0 +1,371 @@
+\documentclass[11pt]{article} 
+\usepackage[latin1]{inputenc} 
+\usepackage[T1]{fontenc} 
+\usepackage{textcomp}
+\usepackage{fullpage} 
+\usepackage{url} 
+\usepackage{ocamldoc}
+\begin{document}
+\tableofcontents
+\section{Module {\tt{Arn\_doc}} : Arbres Rouge-Noirs.}
+\label{module:Arn-underscoredoc}\index{Arn-underscoredoc@\verb`Arn_doc`}
+
+
+
+    Ce module realise des arbres rouges-noirs (auto-equilibrant)
+    fonctionnels. Les operations de Recherche, Insertion et 
+    Suppression y sont garanties en temps logarithmique en 
+    le nombre d'elements. 
+
+
+    Toutes les fonctions presentes dans l'implementation sont
+    documentees ici, y compris celles qui ne sont que des 
+    auxiliaires a d'autres fonctions plus utiles.
+
+
+    NB : Ceci n'est donc {\bf pas} un bon exemple d'interface : 
+    absolument rien n'est cache, rien n'est abstrait. Pire encore,
+    certains commentaires sont des explications pour aider a
+    implementer alors que l'interface doit justement abstraire
+    l'implementation. Mais cela me permet de garder le .ml
+    relativement court, en deplacant la documentation en dehors.
+
+
+    En resume, ceci n'est pas une bonne interface, mais c'est un bon enonce de TP/DM.
+
+
+
+\ocamldocvspace{0.5cm}
+
+
+
+\label{type:Arn-underscoredoc.couleur}\begin{ocamldoccode}
+type couleur =
+  | Rouge
+  | Noir
+\end{ocamldoccode}
+\index{couleur@\verb`couleur`}
+\begin{ocamldocdescription}
+Type des couleurs des noeuds
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{type:Arn-underscoredoc.arn}\begin{ocamldoccode}
+type {\textquotesingle}a arn =
+  | Nil
+  | Node of couleur * {\textquotesingle}a arn * {\textquotesingle}a * {\textquotesingle}a arn
+\end{ocamldoccode}
+\index{arn@\verb`arn`}
+\begin{ocamldocdescription}
+Type des Arbres Rouges-Noirs d'etiquettes de type {\tt{{\textquotesingle}a}}
+
+
+\end{ocamldocdescription}
+
+
+
+
+\subsection{Initialisateurs}
+
+
+
+
+\label{val:Arn-underscoredoc.empty}\begin{ocamldoccode}
+val empty : unit -> {\textquotesingle}a arn
+\end{ocamldoccode}
+\index{empty@\verb`empty`}
+\begin{ocamldocdescription}
+Renvoie un Arbre Rouge-Noir correct vide.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\subsection{Accesseurs}
+
+
+
+
+Proprietes d'un noeud
+
+
+
+Ces fonctions confondent noeud et arbre : 
+    autrement dit, elles s'appliquent au noeud-racine.
+
+
+
+\label{val:Arn-underscoredoc.etiquette}\begin{ocamldoccode}
+val etiquette : {\textquotesingle}a arn -> {\textquotesingle}a
+\end{ocamldoccode}
+\index{etiquette@\verb`etiquette`}
+\begin{ocamldocdescription}
+Renvoie l'etiquette d'un noeud.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.gauche}\begin{ocamldoccode}
+val gauche : {\textquotesingle}a arn -> {\textquotesingle}a arn
+\end{ocamldoccode}
+\index{gauche@\verb`gauche`}
+\begin{ocamldocdescription}
+Renvoie l'enfant gauche d'un noeud.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.droite}\begin{ocamldoccode}
+val droite : {\textquotesingle}a arn -> {\textquotesingle}a arn
+\end{ocamldoccode}
+\index{droite@\verb`droite`}
+\begin{ocamldocdescription}
+Renvoie l'enfant droit d'un noeud.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.est-underscorerouge}\begin{ocamldoccode}
+val est_rouge : {\textquotesingle}a arn -> bool
+\end{ocamldoccode}
+\index{est-underscorerouge@\verb`est_rouge`}
+\begin{ocamldocdescription}
+Teste si un noeud est Rouge.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.est-underscorenoir}\begin{ocamldoccode}
+val est_noir : {\textquotesingle}a arn -> bool
+\end{ocamldoccode}
+\index{est-underscorenoir@\verb`est_noir`}
+\begin{ocamldocdescription}
+Teste si un noeud est Noir.
+    Par convention, les Nil sont aussi Noirs.
+
+
+\end{ocamldocdescription}
+
+
+
+
+Proprietes d'un arbre
+
+
+
+\label{val:Arn-underscoredoc.hauteur}\begin{ocamldoccode}
+val hauteur : {\textquotesingle}a arn -> int
+\end{ocamldoccode}
+\index{hauteur@\verb`hauteur`}
+\begin{ocamldocdescription}
+Renvoie la hauteur d'un (sous-) arbre rouge-noir 
+    (presque) correct.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.hauteur-underscorenoire}\begin{ocamldoccode}
+val hauteur_noire : {\textquotesingle}a arn -> int
+\end{ocamldoccode}
+\index{hauteur-underscorenoire@\verb`hauteur_noire`}
+\begin{ocamldocdescription}
+Renvoie la hauteur noire d'un (sous-) arbre rouge-noir
+    (presque) correct.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.recherche}\begin{ocamldoccode}
+val recherche : {\textquotesingle}a -> {\textquotesingle}a arn -> bool
+\end{ocamldoccode}
+\index{recherche@\verb`recherche`}
+\begin{ocamldocdescription}
+Recherche si un element est present dans un (sous-) arbre
+    rouge-noir (presque) correct.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.minimum}\begin{ocamldoccode}
+val minimum : {\textquotesingle}a arn -> {\textquotesingle}a
+\end{ocamldoccode}
+\index{minimum@\verb`minimum`}
+\begin{ocamldocdescription}
+Renvoie le minimum d'un (sous-) arbre rouge-noir
+    (presque) correct.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.maximum}\begin{ocamldoccode}
+val maximum : {\textquotesingle}a arn -> {\textquotesingle}a
+\end{ocamldoccode}
+\index{maximum@\verb`maximum`}
+\begin{ocamldocdescription}
+Renvoie le maximum d'un (sous-) arbre rouge-noir
+   (presque) correct.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\subsection{Transformateurs}
+
+
+
+
+Recoloriages
+
+
+
+\label{val:Arn-underscoredoc.devient-underscorerouge}\begin{ocamldoccode}
+val devient_rouge : {\textquotesingle}a arn -> {\textquotesingle}a arn
+\end{ocamldoccode}
+\index{devient-underscorerouge@\verb`devient_rouge`}
+\begin{ocamldocdescription}
+Colorie un noeud en Rouge.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.devient-underscorenoir}\begin{ocamldoccode}
+val devient_noir : {\textquotesingle}a arn -> {\textquotesingle}a arn
+\end{ocamldoccode}
+\index{devient-underscorenoir@\verb`devient_noir`}
+\begin{ocamldocdescription}
+Colorie un noeud en Noir.
+
+
+\end{ocamldocdescription}
+
+
+
+
+Rotations
+
+
+
+\label{val:Arn-underscoredoc.rotation-underscoredroite}\begin{ocamldoccode}
+val rotation_droite : {\textquotesingle}a arn -> {\textquotesingle}a arn
+\end{ocamldoccode}
+\index{rotation-underscoredroite@\verb`rotation_droite`}
+\begin{ocamldocdescription}
+Applique une rotation droite.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.rotation-underscoregauche}\begin{ocamldoccode}
+val rotation_gauche : {\textquotesingle}a arn -> {\textquotesingle}a arn
+\end{ocamldoccode}
+\index{rotation-underscoregauche@\verb`rotation_gauche`}
+\begin{ocamldocdescription}
+Applique une rotation gauche.
+
+
+\end{ocamldocdescription}
+
+
+
+
+Insertion
+
+
+
+\label{val:Arn-underscoredoc.corrige-underscorerouge}\begin{ocamldoccode}
+val corrige_rouge : {\textquotesingle}a arn -> {\textquotesingle}a arn
+\end{ocamldoccode}
+\index{corrige-underscorerouge@\verb`corrige_rouge`}
+\begin{ocamldocdescription}
+Corrige un sous-arbre dont un enfant est presque
+    correct en rouge en un sous-arbre rouge-noir correct.
+
+
+    Plus precisement, sous l'hypothese qu'il
+    existe au plus un enchainement de deux rouges,
+    et qu'ils sont situes a profondeur 1 puis 2, 
+    {\tt{corrige\_rouge}} corrige ce probleme.
+
+
+    NB : la racine peut devenir rouge, et donc creer un
+    enchainement de rouges plus haut dans l'arbre.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.insere-underscoreaux}\begin{ocamldoccode}
+val insere_aux : {\textquotesingle}a -> {\textquotesingle}a arn -> {\textquotesingle}a arn
+\end{ocamldoccode}
+\index{insere-underscoreaux@\verb`insere_aux`}
+\begin{ocamldocdescription}
+Insere l'element dans un arbre.
+    et corrige l'enchainement de rouges grace a {\tt{corrige\_rouge}}.
+
+
+    Invariant : apres un appel a insere\_aux , 
+             l'element est insere
+             ET il n'y a pas d'enchainement de rouge.
+             Par contre la racine a pu devenir rouge.
+
+
+\end{ocamldocdescription}
+
+
+
+
+\label{val:Arn-underscoredoc.insere}\begin{ocamldoccode}
+val insere : {\textquotesingle}a -> {\textquotesingle}a arn -> {\textquotesingle}a arn
+\end{ocamldoccode}
+\index{insere@\verb`insere`}
+\begin{ocamldocdescription}
+Insere un element dans un arbre 
+    a l'aide de {\tt{insere\_aux}}.
+    Renvoie un arbre rouge-noir correct,
+    i.e. garantit le maintien des proprietes d'ARN.
+
+
+\end{ocamldocdescription}
+
+
+\end{document}

@@ -1,0 +1,190 @@
+# DÉBUT DE L'HISTORIQUE DES COMMANDES
+gsh goal
+gsh reset
+gsh goal
+clear
+gsh goal
+g
+alias g='gsh check && gsh goal'
+a
+test a
+test g
+test ls
+ls
+test --help
+alias la='ls -A'
+g
+la
+cat .joli_caillou 
+nano ~/Foret/Hutte/Coffre/journal.txt
+g
+alias journal='nano ~/Foret/Hutte/Coffre/journal.txt'
+g
+gsh reset
+cd ~/Chateau/Cave/
+ls
+ls -a
+cd .Taniere_de_la_reine_araignee\ VbtEJetbeaHOTkbI hNUFhJxNKssdQmUT/
+ls
+rm gpWONjUSpBxNWDkG_reine_araignee_OloYaFdKCrkdRLRo 
+gsh check
+gsh goal
+xeyes
+xeyes &
+gsh goal
+g
+charmiglio
+gsh check
+charmiglio && charmiglio && charmiglio 
+g
+charmiglio ; charmiglio ; charmiglio 
+g
+gsh goal
+charmiglio &; charmiglio &; charmiglio &
+charmiglio & charmiglio & charmiglio &
+gsh goal
+gsh check
+charmiglio & charmiglio & charmiglio &
+gsh check
+charmiglio &
+gsh check
+charmiglio & charmiglio & charmiglio & gsh check
+g
+gsh goal
+charmiglio --help
+man charmiglio
+which charmiglio 
+gsh
+gsh goal
+Charmiglio abcd
+gsh goal
+Charmiglio fire
+ls
+cd ~
+ls
+ls -a
+la
+cd Cha
+cd Chateau/
+ls
+la
+gsh goal
+gsh reset
+gsh goal
+Charmiglio *
+Charmiglio
+Charmiglio bang
+Charmiglio pong
+Charmiglio king
+g
+gsh goal
+g
+mv ~/Jardin/Labyrinthe/
+cd ~/Jardin/Labyrinthe/
+tree
+du -h
+du --help
+du --all
+mv e4c7eb0dc/8ea4e47ef2f0add4f5ed7776/ca3ea54d/OOOOO_piece_de_bronze_OOOOO ~/Foret/Hutte/Coffre/
+g
+du -all
+ls
+ls -
+ls -a
+mv 96fbff94d95/464c1770b/b6e56fa69ba3ad08cbe914e11/OOOOO_piece_d_argent_OOOOO ~/Foret/Hutte/Coffre/
+g
+find -name "or"
+find -name "*or*"
+find -iname "*or*"
+mv 49a9075a2848ba395b53/41679319a/21785c33494678337694d/PieCe_D_oR_2 ~/Foret/Hutte/Coffre/
+mv 29741829a49d410fea1844119c48c6/aa12a127132f/d1678950735/piece_d_or_1 ~/Foret/Hutte/Coffre/
+g
+cd ~/Montagne/Grotte/
+ls
+cat servillus 
+g
+cd Livre_de_potions/
+ls
+cat *
+cat page_7
+cat page_07 
+cat page_12 
+cat page_13 
+clear
+ls
+cat table_des_matieres 
+gsh goal
+ls
+cat *
+clear
+cd ..
+cd Livre_de_potions/
+cat -R *
+cat -r *
+cat -r
+cat --help
+cat page_1
+cat page_01 
+cat page_02
+cat page_3
+cat page_03
+cat page_04
+cat page_05
+cat page_06
+cat page_07
+cat page_08
+cat page_09
+cat page_10
+cat page_11
+ls
+ls -a
+cat table_des_matieres 
+gsh goal
+cat page_07 
+head -n 6 page_07
+head -n 5 page_07
+head -n 7 page_07
+head -n 6 page_07
+gsh check
+cd ..
+head -n 6 Livre_de_potions/page_07
+cd ..
+cd Grotte/
+head -n 6 Livre_de_potions/page_07
+gsh check
+gsh goal
+cat Livre_de_potions/table_des_matieres 
+cat Livre_de_potions/page_12 
+gsh check
+tail -n 5
+tail Livre_de_potions/page_12 -n 10
+tail Livre_de_potions/page_12 -n 5
+tail Livre_de_potions/page_12 -n 9
+gsh check
+gsh goal
+cat Livre_de_potions/table_des_matieres 
+cat Livre_de_potions/page_01 Livre_de_potions/page_02
+g
+cat Livre_de_potions/table_des_matieres 
+cat Livre_de_potions/page_03 Livre_de_potions/04
+cat Livre_de_potions/page_03 Livre_de_potions/page_04 
+clear
+cat Livre_de_potions/page_03 Livre_de_potions/page_04 
+cat Livre_de_potions/page_03 Livre_de_potions/page_04 | tail -n 16
+g
+cat Livre_de_potions/table_des_matieres 
+cat Livre_de_potions/page_03 Livre_de_potions/page_04
+cat Livre_de_potions/page_03 Livre_de_potions/page_04 | tail -n 16
+g
+cat Livre_de_potions/page_03 Livre_de_potions/page_04 | tail -n 16 | head -n 16
+g
+gsh goal
+cat Livre_de_potions/table_des_matieres 
+cat Livre_de_potions/page_13 
+cat Livre_de_potions/page_13 | head -n 6
+cat Livre_de_potions/page_13 | head -n 6 | tail -n 3
+gsh check
+gsh goal
+ps
+kill 10944
+kill 23475 23502

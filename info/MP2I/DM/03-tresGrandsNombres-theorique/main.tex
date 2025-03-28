@@ -1,0 +1,99 @@
+\documentclass{article}
+
+\input{lib.tex}
+
+\title{DM d'informatique : Partie théorique}
+\author{Yoan de CORNULIER}
+\date{}
+
+\begin{document}
+\maketitle
+
+\bigskip
+\bigskip
+
+\underline{I) Définition}
+
+\bigskip
+\bigskip
+
+0) Il faut $\log(10^{10^100})=10^{100}$ chiffres pour écrire un gogolplex.
+
+\bigskip
+\bigskip
+
+1) Il faut $\log_2(2^{2^p})=2^p$ pour écrire $x(p)$. Ainsi, on a un débordement lorsque :
+
+$$2^p\geq63\Longrightarrow p\geq\log_2(63)\approx6$$
+
+\bigskip
+\bigskip
+
+2) La fonction $x$ réalise une bijection de $\R^+$ dans $\R^+$, donc $\forall n\geq2,\exists p\in\N, 2^{2^p}\leq n\leq 2^{2^{p+1}}$. On pose la division euclidienne de $n$ par $x(p)$ :
+
+$$
+\exists! (d, g)\in[|1; n|]\times[|0; x(p)[|, n = x(p)d + g
+$$
+
+Or $d< x(p)$, on peut donc en conclure que la proposition est vraie $\forall n\geq2$.
+
+\bigskip
+\bigskip
+
+3) On remarque que dans le pire des cas, l'arbre est limité par la décroissance du paramètre $g$ de chaque noeud, qui est borné par $x(p)$. Ainsi, une borne supérieure asymptotique est $ll(n)=\log_2(\log_2(n))$.
+% Démontrer que la borne est asymptotiquement atteinte.
+
+\bigskip
+\bigskip
+
+4) Cette limitation permet d'éviter le débordement de la valeur $2^k$ dans la définition de $(v)$, en effet, au delà de 61, on a :
+
+$$
+u_n \mod 2^{62} < 2^{62}\\
+\Longrightarrow v_{62,n}< 2^{62} + 2^{62} = 2^{63}
+$$
+
+\bigskip
+\bigskip
+
+5) Par définition, on a :
+
+$$
+h(n+1)=h(n)+x(h(n))\times h(n)
+$$
+
+Par tests successifs, $\forall n\geq3$, h(n) déborde. En effet, $h(2)=21474836485$, et alors h(3) calcule $2^{2^{21474836485}}$ qui déborde.
+
+\bigskip
+\bigskip
+
+6) Montrons par récurrence que $h(n)$ est impaire $\forall n\in\N$.
+
+\begin{itemize}
+    \item Pour $n=0$, $h(0)=1$ est pair.
+    
+    \item Soit $n\in\N$ tel que $h(n)$ est impair, alors $x(h(n))$ est pair, donc $x(h(n))h(n)$ est pair, donc $h(n+1)$ est impair.
+    
+    \item En somme, $\forall n\in\N, h(n)$ est impair.
+\end{itemize}
+
+\bigskip
+\bigskip
+
+15) Un algorithme possible est :
+
+\begin{lstlisting}[language=Python]
+tree increment(tree Node(g, p, d)) {
+    si g < x(p) {
+        g+=1
+    } sinon {
+        d+=1
+        si trouve_p d > 0 {
+            p+=1
+            d = 1
+        }
+    }
+}
+\end{lstlisting}
+
+\end{document}

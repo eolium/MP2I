@@ -320,3 +320,18 @@ Mais cette tradition texto-centriste (tkt c'est un néologisme de fou) nous forc
 Les premiers soubresauts d'une conscience qui aspire à être autônome -> tous les citoyens athéniens (y compris les femmes) pouvaient se rendre au théâtre pour les tragédies.
 
 -> Dyonisii -> coût imposé à un citoyen riche : la chorégie.
+
+
+
+# Cours d'introduction de la pensée spinoziste
+
+## 18 mars
+
+__Spinoza par-ci, Spinoza par là__, Pascale Engel
+
+
+## 37 mars
+
+Moïse Maïmonide
+
+Averroès

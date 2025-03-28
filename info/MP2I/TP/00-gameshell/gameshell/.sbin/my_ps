@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+export MISSION_DIR="$GSH_ROOT/missions/processes/00_shared"
+export TEXTDOMAIN="processes,00_shared"
+exec "$GSH_ROOT/missions/processes/00_shared/my_ps-linux" "$@"

@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+# pcm => "print current mission"
+GSH_CONFIG=$(cd "$(dirname "$0")/../.config"; pwd -P)
+
+pcm() {
+  # NOTE: auto-save takes place after "CHECK_OK", but before STARTing the next mission, so we need to take that into account
+  PCM="$(awk '/^#/ {next}   $2=="START" {m=$1} $2=="CHECK_OK" {m=$1+1} END {print (m)}' "$GSH_CONFIG/missions.log")"
+  if [ -z "$PCM" ]
+  then
+    echo "1"
+    return 1
+  else
+    echo "$PCM"
+  fi
+}
+
+pcm "$@"

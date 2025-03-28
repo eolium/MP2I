@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+if [ -z "$*" ]
+then
+  ps -o pid,ppid,comm
+else
+  ps -o pid,ppid,comm -p $*
+fi
+

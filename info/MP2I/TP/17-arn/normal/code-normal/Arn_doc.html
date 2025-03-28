@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Arn_doc" rel="Chapter" href="Arn_doc.html"><link title="Initialisateurs" rel="Section" href="#2_Initialisateurs">
+<link title="Accesseurs" rel="Section" href="#2_Accesseurs">
+<link title="Transformateurs" rel="Section" href="#2_Transformateurs">
+<link title="Proprietes d'un noeud" rel="Subsection" href="#7_Proprietesdunnoeud">
+<link title="Proprietes d'un arbre" rel="Subsection" href="#7_Proprietesdunarbre">
+<link title="Recoloriages" rel="Subsection" href="#7_Recoloriages">
+<link title="Rotations" rel="Subsection" href="#7_Rotations">
+<link title="Insertion" rel="Subsection" href="#7_Insertion">
+<title>Arn_doc</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Arn_doc.html">Arn_doc</a></h1>
+
+<pre><span id="MODULEArn_doc"><span class="keyword">module</span> Arn_doc</span>: <code class="code">sig</code> <a href="Arn_doc.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<div class="info-desc">
+<p>Arbres Rouge-Noirs.</p>
+
+<p>Ce module realise des arbres rouges-noirs (auto-equilibrant)
+    fonctionnels. Les operations de Recherche, Insertion et 
+    Suppression y sont garanties en temps logarithmique en 
+    le nombre d'elements.</p>
+
+<p>Toutes les fonctions presentes dans l'implementation sont
+    documentees ici, y compris celles qui ne sont que des 
+    auxiliaires a d'autres fonctions plus utiles.</p>
+
+<p>NB : Ceci n'est donc <b>pas</b> un bon exemple d'interface : 
+    absolument rien n'est cache, rien n'est abstrait. Pire encore,
+    certains commentaires sont des explications pour aider a
+    implementer alors que l'interface doit justement abstraire
+    l'implementation. Mais cela me permet de garder le .ml
+    relativement court, en deplacant la documentation en dehors.</p>
+
+<p>En resume, ceci n'est pas une bonne interface, mais c'est un bon enonce de TP/DM.</p>
+</div>
+</div>
+<hr width="100%">
+
+<pre><code><span id="TYPEcouleur"><span class="keyword">type</span> <code class="type"></code>couleur</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcouleur.Rouge"><span class="constructor">Rouge</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcouleur.Noir"><span class="constructor">Noir</span></span></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type des couleurs des noeuds</p>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEarn"><span class="keyword">type</span> <code class="type">'a</code> arn</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarn.Nil"><span class="constructor">Nil</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarn.Node"><span class="constructor">Node</span></span> <span class="keyword">of</span> <code class="type"><a href="Arn_doc.html#TYPEcouleur">couleur</a> * 'a <a href="Arn_doc.html#TYPEarn">arn</a> * 'a * 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type des Arbres Rouges-Noirs d'etiquettes de type <code class="code">'a</code></p>
+</div>
+</div>
+
+<h3 id="2_Initialisateurs">Initialisateurs</h3>
+<pre><span id="VALempty"><span class="keyword">val</span> empty</span> : <code class="type">unit -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Renvoie un Arbre Rouge-Noir correct vide.</p>
+</div>
+</div>
+<h3 id="2_Accesseurs">Accesseurs</h3><div class="h8" id="7_Proprietesdunnoeud">Proprietes d'un noeud</div><p>Ces fonctions confondent noeud et arbre : 
+    autrement dit, elles s'appliquent au noeud-racine.</p>
+
+<pre><span id="VALetiquette"><span class="keyword">val</span> etiquette</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p>Renvoie l'etiquette d'un noeud.</p>
+</div>
+</div>
+
+<pre><span id="VALgauche"><span class="keyword">val</span> gauche</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Renvoie l'enfant gauche d'un noeud.</p>
+</div>
+</div>
+
+<pre><span id="VALdroite"><span class="keyword">val</span> droite</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Renvoie l'enfant droit d'un noeud.</p>
+</div>
+</div>
+
+<pre><span id="VALest_rouge"><span class="keyword">val</span> est_rouge</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Teste si un noeud est Rouge.</p>
+</div>
+</div>
+
+<pre><span id="VALest_noir"><span class="keyword">val</span> est_noir</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Teste si un noeud est Noir.
+    Par convention, les Nil sont aussi Noirs.</p>
+</div>
+</div>
+<div class="h8" id="7_Proprietesdunarbre">Proprietes d'un arbre</div>
+<pre><span id="VALhauteur"><span class="keyword">val</span> hauteur</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Renvoie la hauteur d'un (sous-) arbre rouge-noir 
+    (presque) correct.</p>
+</div>
+</div>
+
+<pre><span id="VALhauteur_noire"><span class="keyword">val</span> hauteur_noire</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Renvoie la hauteur noire d'un (sous-) arbre rouge-noir
+    (presque) correct.</p>
+</div>
+</div>
+
+<pre><span id="VALrecherche"><span class="keyword">val</span> recherche</span> : <code class="type">'a -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Recherche si un element est present dans un (sous-) arbre
+    rouge-noir (presque) correct.</p>
+</div>
+</div>
+
+<pre><span id="VALminimum"><span class="keyword">val</span> minimum</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p>Renvoie le minimum d'un (sous-) arbre rouge-noir
+    (presque) correct.</p>
+</div>
+</div>
+
+<pre><span id="VALmaximum"><span class="keyword">val</span> maximum</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p>Renvoie le maximum d'un (sous-) arbre rouge-noir
+   (presque) correct.</p>
+</div>
+</div>
+<h3 id="2_Transformateurs">Transformateurs</h3><div class="h8" id="7_Recoloriages">Recoloriages</div>
+<pre><span id="VALdevient_rouge"><span class="keyword">val</span> devient_rouge</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Colorie un noeud en Rouge.</p>
+</div>
+</div>
+
+<pre><span id="VALdevient_noir"><span class="keyword">val</span> devient_noir</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Colorie un noeud en Noir.</p>
+</div>
+</div>
+<div class="h8" id="7_Rotations">Rotations</div>
+<pre><span id="VALrotation_droite"><span class="keyword">val</span> rotation_droite</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Applique une rotation droite.</p>
+</div>
+</div>
+
+<pre><span id="VALrotation_gauche"><span class="keyword">val</span> rotation_gauche</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Applique une rotation gauche.</p>
+</div>
+</div>
+<div class="h8" id="7_Insertion">Insertion</div>
+<pre><span id="VALcorrige_rouge"><span class="keyword">val</span> corrige_rouge</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Corrige un sous-arbre dont un enfant est presque
+    correct en rouge en un sous-arbre rouge-noir correct.</p>
+
+<p>Plus precisement, sous l'hypothese qu'il
+    existe au plus un enchainement de deux rouges,
+    et qu'ils sont situes a profondeur 1 puis 2, 
+    <code class="code">corrige_rouge</code> corrige ce probleme.</p>
+
+<p>NB : la racine peut devenir rouge, et donc creer un
+    enchainement de rouges plus haut dans l'arbre.</p>
+</div>
+</div>
+
+<pre><span id="VALinsere_aux"><span class="keyword">val</span> insere_aux</span> : <code class="type">'a -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Insere l'element dans un arbre.
+    et corrige l'enchainement de rouges grace a <code class="code">corrige_rouge</code>.</p>
+
+<p>Invariant : apres un appel a insere_aux , 
+             l'element est insere
+             ET il n'y a pas d'enchainement de rouge.
+             Par contre la racine a pu devenir rouge.</p>
+</div>
+</div>
+
+<pre><span id="VALinsere"><span class="keyword">val</span> insere</span> : <code class="type">'a -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Insere un element dans un arbre 
+    a l'aide de <code class="code">insere_aux</code>.
+    Renvoie un arbre rouge-noir correct,
+    i.e. garantit le maintien des proprietes d'ARN.</p>
+</div>
+</div>
+</body></html>

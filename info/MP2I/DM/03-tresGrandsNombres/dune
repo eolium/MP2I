@@ -1,0 +1,18 @@
+; Définir suites comme une librairie
+(library
+ (name suites)
+ (modules suites))
+
+
+; Définir nombres comme la target de compilation
+(executable
+ (name nombres)
+ (modules nombres)
+ (libraries suites)
+ )
+
+
+; Passer l'erreur unused variable en warning
+(env
+  (dev
+   (flags (:standard -warn-error -32))))

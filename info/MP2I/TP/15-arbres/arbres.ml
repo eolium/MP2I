@@ -76,16 +76,25 @@ type 'a arbre = Nil_b | Node_b of 'a * 'a arbre list
 
 let rec list_max lst =
 	match lst with
-	| [] -> 0
+	| [] -> -1
 	| t::q -> max t (list_max q)
 
 let rec hauteur_arbre arbre =
 	match arbre with
-	| Nil_b -> 0
-	| Node_b (e, lst) -> list_max (List.map hauteur_arbre lst)
+	| Nil_b -> -1
+	| Node_b (e, lst) -> 1 + list_max (List.map hauteur_arbre lst)
 
-let rec transfo_LCRS arbre =
-	match arbre with
+let rec lcrs_aux noeud adelphes =
+	let transfo_adelphes =
+		match adelphes with
+		| [] -> Nil
+		| t::q -> lcrs_aux t q
+	in 
+	match noeud with
 	| Nil_b -> Nil
-	| Node_b (e, lst) -> match lst with
-		| t::q -> Node(transfo_LCRS t, e, transfo_LCRS (Node_b e q))
+	| Node_b(x, []) -> Node (Nil, x, transfo_adelphes)
+	| Node_b(x, enf_g::enf_autres) ->
+		let transfo_enfants = lcrs_aux enf_g enf_autres in
+		Node (transfo_enfants, x, transfo_adelphes)
+
+let transfo_LCRS noeud = lcrs_aux noeud []

@@ -1,0 +1,437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Arn_doc" rel="Chapter" href="Arn_doc.html"><link title="Initialisateurs" rel="Section" href="#2_Initialisateurs">
+<link title="Accesseurs" rel="Section" href="#2_Accesseurs">
+<link title="Transformateurs" rel="Section" href="#2_Transformateurs">
+<link title="Proprietes d'un noeud" rel="Subsection" href="#7_Proprietesdunnoeud">
+<link title="Proprietes d'un arbre" rel="Subsection" href="#7_Proprietesdunarbre">
+<link title="Recoloriages" rel="Subsection" href="#7_Recoloriages">
+<link title="Rotations" rel="Subsection" href="#7_Rotations">
+<link title="Insertion" rel="Subsection" href="#7_Insertion">
+<link title="Suppression" rel="Subsection" href="#7_Suppression">
+<title>Arn_doc</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Arn_doc.html">Arn_doc</a></h1>
+
+<pre><span id="MODULEArn_doc"><span class="keyword">module</span> Arn_doc</span>: <code class="code">sig</code> <a href="Arn_doc.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<div class="info-desc">
+<p>Arbres Rouge-Noirs.</p>
+
+<p>Ce module realise des arbres rouges-noirs (auto-equilibrant)
+    fonctionnels. Les operations de Recherche, Insertion et 
+    Suppression y sont garanties en temps logarithmique en 
+    le nombre d'elements.</p>
+
+<p>Toutes les fonctions presentes dans l'implementation sont
+    documentees ici, y compris celles qui ne sont que des 
+    auxiliaires a d'autres fonctions plus utiles.</p>
+
+<p>NB : Ceci n'est donc <b>pas</b> un bon exemple d'interface : 
+    absolument rien n'est cache, rien n'est abstrait. Pire encore,
+    certains commentaires sont des explications pour aider a
+    implementer alors que l'interface doit justement abstraire
+    l'implementation. Mais cela me permet de garder le .ml
+    relativement court, en deplacant la documentation en dehors.</p>
+
+<p>En resume, ceci n'est pas une bonne interface, mais c'est un bon enonce de TP/DM.</p>
+</div>
+</div>
+<hr width="100%">
+
+<pre><code><span id="TYPEcouleur"><span class="keyword">type</span> <code class="type"></code>couleur</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcouleur.Rouge"><span class="constructor">Rouge</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcouleur.Noir"><span class="constructor">Noir</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcouleur.Doublenoir"><span class="constructor">Doublenoir</span></span></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type des couleurs des noeuds</p>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEarn"><span class="keyword">type</span> <code class="type">'a</code> arn</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarn.Nil"><span class="constructor">Nil</span></span> <span class="keyword">of</span> <code class="type"><a href="Arn_doc.html#TYPEcouleur">couleur</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTarn.Node"><span class="constructor">Node</span></span> <span class="keyword">of</span> <code class="type"><a href="Arn_doc.html#TYPEcouleur">couleur</a> * 'a <a href="Arn_doc.html#TYPEarn">arn</a> * 'a * 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type des Arbres Rouges-Noirs d'etiquettes de type <code class="code">'a</code></p>
+</div>
+</div>
+
+<h3 id="2_Initialisateurs">Initialisateurs</h3>
+<pre><span id="VALempty"><span class="keyword">val</span> empty</span> : <code class="type">unit -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">empty ()</code> est Arbre Rouge-Noir correct vide.</p>
+</div>
+</div>
+<h3 id="2_Accesseurs">Accesseurs</h3><div class="h8" id="7_Proprietesdunnoeud">Proprietes d'un noeud</div><p>Ces fonctions confondent noeud et arbre : 
+    autrement dit, elles s'appliquent au noeud-racine.</p>
+
+<pre><span id="VALetiquette"><span class="keyword">val</span> etiquette</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">etiquette n</code> est l'étiquette du noeud <code class="code">n</code></p>
+</div>
+</div>
+
+<pre><span id="VALgauche"><span class="keyword">val</span> gauche</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">gauche n</code> est l'enfant gauche du noeud <code class="code">n</code></p>
+</div>
+</div>
+
+<pre><span id="VALdroite"><span class="keyword">val</span> droite</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">droite n</code> est l'enfant droite du noeud <code class="code">n</code></p>
+</div>
+</div>
+
+<pre><span id="VALest_rouge"><span class="keyword">val</span> est_rouge</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">est_rouge n</code> vaut <code class="code">true</code> ssi le noeud <code class="code">n</code> est Rouge</p>
+</div>
+</div>
+
+<pre><span id="VALest_noir"><span class="keyword">val</span> est_noir</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">est_noir n</code> vaut <code class="code">true</code> ssi le noeud <code class="code">n</code> est Noir. Sur un arbre vide, renvoie <code class="code">true</code></p>
+</div>
+</div>
+
+<pre><span id="VALest_doublenoir"><span class="keyword">val</span> est_doublenoir</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">est_doublenoir n</code> vaut <code class="code">true</code> ssi le noeud <code class="code">n</code> est Doublenoir. Fonctionne aussi sur les arbres vides.</p>
+</div>
+</div>
+
+<pre><span id="VALest_feuille"><span class="keyword">val</span> est_feuille</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">est_feuille n</code> vaut <code class="code">true</code> ssi le noeud <code class="code">n</code> est une feuille</p>
+</div>
+</div>
+<div class="h8" id="7_Proprietesdunarbre">Proprietes d'un arbre</div>
+<pre><span id="VALhauteur"><span class="keyword">val</span> hauteur</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">hauteur a</code> est la hauteur du (sous-) arbre 
+    rouge-noir (presque) correct <code class="code">a</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALhauteur_noire"><span class="keyword">val</span> hauteur_noire</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">hauteur_noire a</code> est la hauteur noire du (sous-) arbre 
+    rouge-noir (presque) correct <code class="code">a</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALrecherche"><span class="keyword">val</span> recherche</span> : <code class="type">'a -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">recherche x a</code> vaut <code class="code">true</code> ssi <code class="code">x</code> est présent dans le 
+    (sous-) arbre rouge-noir (presque) correct <code class="code">a</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALminimum"><span class="keyword">val</span> minimum</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">minimum a</code> est l'étiquette minimale d'un (sous-) arbre
+    rouge-noir (presque) correct <code class="code">a</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALmaximum"><span class="keyword">val</span> maximum</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">maximum a</code> est l'étiquette maximale d'un (sous-) arbre
+    rouge-noir (presque) correct <code class="code">a</code>.</p>
+</div>
+</div>
+<h3 id="2_Transformateurs">Transformateurs</h3><div class="h8" id="7_Recoloriages">Recoloriages</div>
+<pre><span id="VALdevient_rouge"><span class="keyword">val</span> devient_rouge</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">devient_rouge n</code> recolorie <code class="code">n</code> en Rouge.</p>
+</div>
+</div>
+
+<pre><span id="VALdevient_noir"><span class="keyword">val</span> devient_noir</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">devient_noir n</code> recolorie <code class="code">n</code> en Noir.</p>
+</div>
+</div>
+
+<pre><span id="VALnoircir"><span class="keyword">val</span> noircir</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">noircir n</code> recolorie <code class="code">n</code> en lui ajoutant un 
+    niveau de Noir.</p>
+</div>
+</div>
+
+<pre><span id="VALeclaircir"><span class="keyword">val</span> eclaircir</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">noircir n</code> recolorie <code class="code">n</code> en lui enlevant un 
+    niveau de Noir.</p>
+</div>
+</div>
+<div class="h8" id="7_Rotations">Rotations</div>
+<pre><span id="VALrotation_droite"><span class="keyword">val</span> rotation_droite</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Applique une rotation droite.</p>
+</div>
+</div>
+
+<pre><span id="VALrotation_gauche"><span class="keyword">val</span> rotation_gauche</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Applique une rotation gauche.</p>
+</div>
+</div>
+<div class="h8" id="7_Insertion">Insertion</div><p>Pour les fonctions auxiliaires, on suppose qu'il existe 
+    un seul enchainement de rouges dans l'arbre : <code class="code">p</code> et 
+    son fils <code class="code">x</code>. Le pere <code class="code">pp</code> de <code class="code">p</code> est donc noir.
+    On note <code class="code">f</code> l'adelphe de <code class="code">p</code>. Dans les fonctions 
+    suivantes, <code class="code">pp</code> est la racine de l'arbre : c'est a dire
+    que l'enchainement de rouges est a profondeur 1 puis 2.</p>
+
+<pre><span id="VALins_cas1"><span class="keyword">val</span> ins_cas1</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme d'enchainement rouge
+    dans le Cas 1 : 
+    si <code class="code">p</code> et <code class="code">f</code> sont rouges.</p>
+
+<p>NB : ce cas recolorie la <code class="code">pp</code> en Rouge et peut
+    donc creer un probleme plus haut.</p>
+</div>
+</div>
+
+<pre><span id="VALins_cas2a"><span class="keyword">val</span> ins_cas2a</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme d'enchainement rouge 
+    dans le Cas 2a : si <code class="code">f</code> est noir, 
+    si <code class="code">p</code> est fils gauche, et <code class="code">x</code> fils gauche.</p>
+</div>
+</div>
+
+<pre><span id="VALins_cas2a"><span class="keyword">val</span> ins_cas2a</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme d'enchainement rouge 
+    dans le Cas 2b : si <code class="code">f</code> est noir, 
+    si <code class="code">p</code> est fils gauche, et <code class="code">x</code> fils droit.</p>
+
+<p>Resoud le probleme d'enchainement rouges.</p>
+</div>
+</div>
+
+<pre><span id="VALins_cas3a"><span class="keyword">val</span> ins_cas3a</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme d'enchainement rouge 
+    dans le Cas 3a : si <code class="code">f</code> est noir, 
+    si <code class="code">p</code> est fils droit, et <code class="code">x</code> fils droit.</p>
+</div>
+</div>
+
+<pre><span id="VALins_cas3b"><span class="keyword">val</span> ins_cas3b</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme d'enchainement rouge 
+    dans le Cas 3b : si <code class="code">f</code> est noir, 
+    si <code class="code">p</code> est fils droit, et <code class="code">x</code> fils gauche.</p>
+</div>
+</div>
+
+<pre><span id="VALcorrige_rouge"><span class="keyword">val</span> corrige_rouge</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Transforme un sous-arbre rouge-noir 
+    presque correct en rouge en un sous-arbre
+    rouge-noir correct.</p>
+
+<p>Plus precisement, sous l'hypothese qu'il
+    existe au plus un enchainement de deux rouges,
+    et qu'ils sont situes a profondeur 1 puis 2, 
+    <code class="code">corrige_rouge</code> corrige ce probleme.</p>
+
+<p>NB : la racine peut devenir rouge, et donc creer un
+    enchainement de rouges plus haut dans l'arbre.</p>
+</div>
+</div>
+
+<pre><span id="VALinsere_aux"><span class="keyword">val</span> insere_aux</span> : <code class="type">'a -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Insere l'element dans un arbre.
+    et corrige l'enchainement de rouges grace a <code class="code">corrige_rouge</code>.</p>
+
+<p>Invariant : apres un appel a insere_aux sur un sous-arbre
+              rouge-noir presque correct en rouge, l'element 
+              est insere
+              ET il n'y a pas d'enchainement de rouge.
+              Par contre la racine a pu devenir rouge.</p>
+</div>
+</div>
+
+<pre><span id="VALinsere"><span class="keyword">val</span> insere</span> : <code class="type">'a -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Insere un element dans un arbre 
+    a l'aide de <code class="code">insere_aux</code>.
+    Renvoie un arbre rouge-noir correct,
+    i.e. garantit le maintien des proprietes d'ARN.</p>
+</div>
+</div>
+<div class="h8" id="7_Suppression">Suppression</div><p>Pour les fonctions auxiliaires, on suppose qu'il existe 
+    un seul enchainement Doublenoir dans l'arbre : <code class="code">x</code> . 
+    On note. Le pere <code class="code">p</code> le pere de <code class="code">x</code> et <code class="code">f</code> son frere.
+    On note <code class="code">f</code> le frere de <code class="code">p</code>. On note <code class="code">g</code> et <code class="code">d</code>
+    les eventuels enfants gauches et droits de <code class="code">f</code>.
+    Dans les fonctions suivantes, <code class="code">p</code> est la racine 
+    de l'arbre : c'est a dire que le Doublenoir 
+    est a profondeur 1.</p>
+
+<pre><span id="VALsuppr_casfNil"><span class="keyword">val</span> suppr_casfNil</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme de DoubleNoir dans
+  le cas ou <code class="code">f = Nil</code></p>
+
+<p>Indication : dans quelles conditions ce cas peut-il arriver ?</p>
+</div>
+</div>
+
+<pre><span id="VALsuppr_cas1a"><span class="keyword">val</span> suppr_cas1a</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme de Doublenoir dans
+    le cas1a : si <code class="code">x</code> est fils gauche,
+    si <code class="code">f</code> est noir et si <code class="code">g</code> et <code class="code">d</code> sont noirs.</p>
+
+<p>NB : ce cas noircit <code class="code">p</code>, et peut donc
+    creer un Doublenoir plus haut.</p>
+</div>
+</div>
+
+<pre><span id="VALsuppr_cas1b"><span class="keyword">val</span> suppr_cas1b</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme de Doublenoir dans
+    le cas1b : si <code class="code">x</code> est fils gauche,
+    si <code class="code">f</code> est noir et si <code class="code">d</code> est rouge.</p>
+</div>
+</div>
+
+<pre><span id="VALsuppr_cas1c"><span class="keyword">val</span> suppr_cas1c</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme de Doublenoir dans
+    le cas1c : si <code class="code">x</code> est fils gauche,
+    si <code class="code">f</code> est noir, si <code class="code">g</code> est rouge
+    et si <code class="code">d</code> est noir.</p>
+</div>
+</div>
+
+<pre><span id="VALsuppr_cas3a"><span class="keyword">val</span> suppr_cas3a</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme de Doublenoir dans
+    le cas1a : si <code class="code">x</code> est fils droit,
+    si <code class="code">f</code> est noir et si <code class="code">g</code> et <code class="code">d</code> sont noirs.</p>
+
+<p>NB : ce cas noircit <code class="code">p</code>, et peut donc
+    creer un Doublenoir plus haut.</p>
+</div>
+</div>
+
+<pre><span id="VALsuppr_cas3b"><span class="keyword">val</span> suppr_cas3b</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme de Doublenoir dans
+    le cas1b : si <code class="code">x</code> est fils droit,
+    si <code class="code">f</code> est noir et si <code class="code">g</code> est rouge.</p>
+</div>
+</div>
+
+<pre><span id="VALsuppr_cas3c"><span class="keyword">val</span> suppr_cas3c</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme de Doublenoir dans
+    le cas3c : si <code class="code">x</code> est fils droit,
+    si <code class="code">f</code> est noir, si <code class="code">g</code> est noir
+    et si <code class="code">d</code> est rouge.</p>
+</div>
+</div>
+
+<pre><span id="VALsuppr_cas2"><span class="keyword">val</span> suppr_cas2</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme de Doublenoir dans
+    le cas2 : si <code class="code">x</code> est fils gauche et
+    si <code class="code">f</code> est rouge.</p>
+</div>
+</div>
+
+<pre><span id="VALsuppr_cas4"><span class="keyword">val</span> suppr_cas4</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Resout le probleme de Doublenoir dans
+    le cas4 : si <code class="code">x</code> est fils droit et
+    si <code class="code">f</code> est rouge.</p>
+</div>
+</div>
+
+<pre><span id="VALcorrige_doublenoir"><span class="keyword">val</span> corrige_doublenoir</span> : <code class="type">'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Corrige un noeud Doublenoir.
+    Plus precisement, sous l'hypothese qu'il
+    existe au plus un noeud Doublenoir,
+    et qu'ils est situéà profondeur 1, 
+    <code class="code">corrige_rouge</code> soit corrige ce probleme,
+    soit déplace le Doublenoir à profondeur 0.</p>
+</div>
+</div>
+
+<pre><span id="VALsupprime_aux"><span class="keyword">val</span> supprime_aux</span> : <code class="type">'a -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Supprime un element d'un arbre
+    et corrige/fait remonter le doublenoir eventuel
+    à la racine grace a <code class="code">corrige_doublenoir</code> .
+    Invariant : après un appel à <code class="code">supprime_aux</code>,
+    l'élément est supprime et s'il y a un Doublenoir
+    c'est uniquement à la racine.</p>
+</div>
+</div>
+
+<pre><span id="VALsupprime"><span class="keyword">val</span> supprime</span> : <code class="type">'a -&gt; 'a <a href="Arn_doc.html#TYPEarn">arn</a> -&gt; 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p>Supprime un element d'un arbre 
+    l'aide de <code class="code">supprime_aux</code>.
+    i.e. garantit le maintient des proprietes d'ARN.
+    Renvoie un arbre rouge-noir noir</p>
+</div>
+</div>
+</body></html>

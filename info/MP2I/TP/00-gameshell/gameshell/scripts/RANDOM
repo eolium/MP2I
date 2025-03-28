@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+# to be used as a replacement for bash' $RANDOM
+
+GSH_ROOT=$(cd "$(dirname "$0")/.." && pwd -P)
+GSH_CONFIG=$GSH_ROOT/.config
+
+n=${1:-1}
+
+awk -v seed_file="$GSH_CONFIG/PRNG_seed" -v n="$n" -v PID=$$ 'BEGIN {
+  getline seed < seed_file;
+  if (seed) srand(seed); else srand();
+  for (i=0; i<n; i++) {
+    print int(rand()*65536);
+  }
+  if (seed) printf("%d\n", int(2^30 * rand())+PID) > seed_file;
+}'
+
+# make sure the seed is not corrupted / empty
+# (it could happen if the process is interrupted at the wrong time)
+if [ -d "$GSH_CONFIG" ]
+then
+  case "$(cat "$GSH_CONFIG/PRNG_seed" 2>/dev/null)" in
+    "" | *[!0-9]*)
+      awk -v seed_file="$GSH_CONFIG/PRNG_seed" 'BEGIN { srand(); printf("%s", int(2^32 * rand())) > seed_file; }'
+      ;;
+    *)
+      :
+      ;;
+  esac
+fi
