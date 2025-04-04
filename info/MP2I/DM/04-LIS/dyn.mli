@@ -24,7 +24,7 @@ val lis : 'a array -> int
     avec [k = search arr lg i] si [k > 0],
     et vaut [None] sinon.
 *)
-val search_indice : 'a array -> 'b array -> int -> int option
+val search_indice : 'a array -> int array -> int -> int option
 
 (** [sol_lis arr] est la plus longue sous-séquence 
     (sous-tableau) croissante de [arr]

@@ -15,8 +15,9 @@ val is_increasing : 'a list -> bool
 *)
 val all_subsequence : 'a list -> 'a list list
 
-(** [all_subsequence l] est la liste des
-    sous-séquences (sous-listes) de [l]
+(** [all_subsequence_increasing l] est la liste 
+    des sous-séquences (sous-listes) de [l]
+    qui sont croissantes.
 *)
 val all_sub_increasing : 'a list -> 'a list list
 

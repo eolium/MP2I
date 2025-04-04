@@ -1,13 +1,31 @@
-# Présentation rapide du problème (Z)
+# Objectifs
 
-# Plusieurs pistes envisagées (Y)
+- Développer une fonction d'approximation d'une équa-diff
+- simulation de la situation
 
-## a) Premier aspect : Brute-force impossible
 
-## a) Étude d'un retour 
+# Entrée
 
-## a) Cartes prénalisantes
+- équa-diff formalisées ?
+- problème à n corps ?
 
-## b) 
+# Sortie
 
-# Une solution finale (R)
+## Simulation d'une situation
+
+### Optimisation
+
+- Barns Hutt
+
+
+### Précision
+
+- Algorithme de Verlet
+- méthode de Runge-Kutta
+
+## Modélisation d'une solution
+
+- Génération d'une solution par heuristique
+    - à voir...
+
+    
