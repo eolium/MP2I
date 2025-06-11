@@ -41,7 +41,7 @@ let print_intarray arr =
 (************)
 
 let () =
-  print_endline "test.txt :";
-  let all_lines = Load.get_intlist "test.txt" in
+  print_endline "sequences.txt :";
+  let all_lines = Load.get_intlist "sequences.txt" in
   let all_lis = List.map Naif.lis all_lines in
   List.iteri (Printf.printf "Ligne %d : lis=%d\n") all_lis

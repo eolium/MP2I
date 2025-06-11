@@ -335,3 +335,4 @@ __Spinoza par-ci, Spinoza par là__, Pascale Engel
 Moïse Maïmonide
 
 Averroès
+
